@@ -1,19 +1,19 @@
-Git!
+п»їGit!
 make link to added file. Hash-summa.
 git init - add file to git-repository. git status - see you this files.
 git add contact.txt - choose file for commiting "add .(dot)" - add all files to repository.
 git commit - for commit files in repository. ":qw" - close VIM - aditor for Linux-system.
 git log - show all commit "-p".
 git mv new.txt super.txt - rename any file.
-git checkout (6 or more numbers hash-summ) - откотится to commit.
-git checkout master - откотится to last commit.
+git checkout (6 or more numbers hash-summ) - РѕС‚РєРѕС‚РёС‚СЃСЏ to commit.
+git checkout master - РѕС‚РєРѕС‚РёС‚СЃСЏ to last commit.
 git diff --staged - show changes.
 git reset HEAD new.txt - delete file from commit.
 rm new.txt - remove/delete this file.
-git checkout -- contact.txt - откатить if you didn't add file, but add some no need changes.
+git checkout -- contact.txt - РѕС‚РєР°С‚РёС‚СЊ if you didn't add file, but add some no need changes.
 specialist (metodoly project) 01:07:00
 git log --graph - show commits together with branches.
-git branch nameBranch - show/create all/new branches(ветки).
+git branch nameBranch - show/create all/new branches(РІРµС‚РєРё).
 git add -a -m 'commit' - add and commit together.
 git checkout nameBranch - choose branch.
 git checkout -b nameBranch - short method create and choose branch.

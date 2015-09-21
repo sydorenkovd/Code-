@@ -1,8 +1,8 @@
-<form action="some.php" method="POST"> - post data to server.
+п»ї<form action="some.php" method="POST"> - post data to server.
 <select name="some_name">
 <option value="some_value">Some value</option> - typical select for web-form.
 </select>
-"@" - we can insert this symbol before our function and we will able to подавить screen errors.
+"@" - we can insert this symbol before our function and we will able to РїРѕРґР°РІРёС‚СЊ screen errors.
 chapter 9.
 blob - type for saving data(binary large object)
 300/512 - Maklafin

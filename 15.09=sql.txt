@@ -1,11 +1,11 @@
-First normal form:
+п»їFirst normal form:
 - Have not repeated column with the same type-data
 - All graphs must have only one point.
 - Must have primary key.
 Mysql-specialist:
 SELECT * FROM some_table
 WHERE id IN (SELECT id FROM some_another_table;); -- select column with id in                                                   -- some_another_table.
------------------Агрегаты-----------
+-----------------РђРіСЂРµРіР°С‚С‹-----------
 SELECT AVG(exeptLifeAge) -- averange number of age for life in our world.
 FROM world.country;
 ----------
@@ -40,15 +40,15 @@ OEDER BY name;
 SELECT name
 FROM country
 WHERE squareArea = (
-SELECT MAX(squareArea) -- select country with biggest area, we use plural select(вложеная
-FROM country);         -- выборка данных).
+SELECT MAX(squareArea) -- select country with biggest area, we use plural select(РІР»РѕР¶РµРЅР°СЏ
+FROM country);         -- РІС‹Р±РѕСЂРєР° РґР°РЅРЅС‹С…).
 ----------------
-SELECT c1.name,c1.countryCode            -- 'c1' and 'c2' are псевдонимы city
+SELECT c1.name,c1.countryCode            -- 'c1' and 'c2' are РїСЃРµРІРґРѕРЅРёРјС‹ city
 FROM city c1 INNER JOIN city c2          -- join all city which have the same name.
 ON c1.name = c2.name
 WHERE c1.id <>(!=) c2.id
 AND (c1.countryCode = 'RUS' OR c1.countryCode = 'UKR'); -- with countryCode(Ukraine and                                                         -- Russia.
----------------Подзапросы с выражениями ANY, IN, SOME-------
+---------------РџРѕРґР·Р°РїСЂРѕСЃС‹ СЃ РІС‹СЂР°Р¶РµРЅРёСЏРјРё ANY, IN, SOME-------
 SELECT name
 FROM country
 WHERE population > ANY(

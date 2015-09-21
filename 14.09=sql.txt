@@ -1,6 +1,6 @@
-consider - размышлять, обсуждать.
-considerable - значительный.
-considerate - внимательный к другим.
+п»їconsider - СЂР°Р·РјС‹С€Р»СЏС‚СЊ, РѕР±СЃСѓР¶РґР°С‚СЊ.
+considerable - Р·РЅР°С‡РёС‚РµР»СЊРЅС‹Р№.
+considerate - РІРЅРёРјР°С‚РµР»СЊРЅС‹Р№ Рє РґСЂСѓРіРёРј.
 GRANT ALL ON some_database.* TO 'nickname'@'localhost'
 IDENTIFIED BY 'password';                    -- it needs to create user and give him some right access.
 ----------
@@ -8,7 +8,7 @@ ENGINE MyISAM; -- type tool for manager database.
 ALTER TABLE some_table DROP some_column; -- delete column.
 SELECT COUNT(*) FROM some_table; -- count number of column, and return this.
 SELECT DISTINCT author,id FROM some_table; -- show data without coincedence.
-SELECT author,title FROM some_table WHERE author LIKE "Charles%"; -- LIKE is спецификатор.
+SELECT author,title FROM some_table WHERE author LIKE "Charles%"; -- LIKE is СЃРїРµС†РёС„РёРєР°С‚РѕСЂ.
 SELECT author,title FROM some_table LIMIT 1,2; -- give me two strings, begin from second string, we start counting from "0".
 ---------------
 UPDATE classics SET author='Mark Twain (Samuel Langhorne Clemens)'
@@ -40,7 +40,7 @@ LOAD DATA
 DELETE FROM table2
 	WHERE id = 57; -- delete some data from table, we must have WHERE in your mysql-                       --  request.
 -----------------------
-ASC and DESC -- sort by возрастанию и убыванию.
+ASC and DESC -- sort by РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ Рё СѓР±С‹РІР°РЅРёСЋ.
 DELTE FROM table2
 ORDER BY id DESC  -- sort by down--, and delete one column.
 LIMIT 1;

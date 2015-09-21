@@ -1,15 +1,15 @@
-passion - страсть.
+п»їpassion - СЃС‚СЂР°СЃС‚СЊ.
 XML:
 HTML - describe how we can show document
 XML - describe meaning and relation data.
 <?xml version="1.0" encoding="utf-8" ?> - prolog or XML declaration.
-One корневой element.
+One РєРѕСЂРЅРµРІРѕР№ element.
 If you have strange symbol which no include in ACII, "encoding" must have.
 URI - Uniform Resource Identifier.
-xmlns:price="http://zenviks.ru/catalog/pricelist" -- обозначает пространства имён.
+xmlns:price="http://zenviks.ru/catalog/pricelist" -- РѕР±РѕР·РЅР°С‡Р°РµС‚ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІР° РёРјС‘РЅ.
 <price:book>
-	<price:title>XML и IE5</price:title>
-	<price:author>Алекс Гомер</price:author>
+	<price:title>XML Рё IE5</price:title>
+	<price:author>РђР»РµРєСЃ Р“РѕРјРµСЂ</price:author>
 	<price:price>200</price:price>
 </price:book>
 XML:SPEC:2day.
@@ -25,7 +25,7 @@ Some words about new features HTML5:
 <input type='password' name='password' autocomplete='off'>
 </form>
 //you can turn off autocomplete in some fields.
-<input type='text' name='name' size='50' placeholder='Имя и фамилия'>
+<input type='text' name='name' size='50' placeholder='РРјСЏ Рё С„Р°РјРёР»РёСЏ'>
 //some useful advice for helping user
 <input type='text' name='creditcard' required='required'>
 // it mean that this fiels must be written.

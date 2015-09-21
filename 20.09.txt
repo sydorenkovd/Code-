@@ -1,9 +1,9 @@
-Cookie:
+п»їCookie:
 setcookie(name, value, time()); -- set cookies.
 if (isset($_COOKIE['username']))
 $username = $_COOKIE['username']; -- access to COOKIE-array.
 -----------------
-$token = hash('ripemd128', 'mypassword'); -- хеширование password, result will be a number like "7b694600c8a2a2b0897c719958713619".
+$token = hash('ripemd128', 'mypassword'); -- С…РµС€РёСЂРѕРІР°РЅРёРµ password, result will be a number like "7b694600c8a2a2b0897c719958713619".
 -------------------------
 Example code for authenticate:13-4nixon
 <?php // authenticate.php
@@ -61,11 +61,11 @@ Example code for authenticate:13-4nixon
 Lynda/CRUD
 --------------------
 model -- for mysql-request and other logic.
-view -- представление pages.
+view -- РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ pages.
 controler -- bisness logic, communicate users with programm, view with model.
 --------------------
 Maklafin 346/5**.
--------------Процедуры в Mysql-------------
+-------------РџСЂРѕС†РµРґСѓСЂС‹ РІ Mysql-------------
 DROP PROCEDURE IF EXAST getcountries;
 delimiter |
 CREATE DEFINER = 'root'@'localhost' PROCEDURE -- create procedure.
@@ -74,11 +74,11 @@ BEGIN
 SELECT name FROM country
 WHERE continent = c;
 END;
-| delimiter ; -- переопределить делиметр обратно на ";".
+| delimiter ; -- РїРµСЂРµРѕРїСЂРµРґРµР»РёС‚СЊ РґРµР»РёРјРµС‚СЂ РѕР±СЂР°С‚РЅРѕ РЅР° ";".
 
 CALL getcountries('Asia');   -- select all Asia-countries.
 CALL getcountries('Europe'); -- select all Europe-countries.
---------------Курсоры-------------
+--------------РљСѓСЂСЃРѕСЂС‹-------------
 <!-- get list of city any country with name TITLE where popularity more than number 'N'-->
 DROP PROCEDURE IF EXAST getcities;
 delimiter |
@@ -118,9 +118,9 @@ DELIMITER |
 DROP TRIGGER IF EXISTS tg_product_update |
 CREATE TRIGGER tg_product_update AFTER UPDATE ON product
 FOR EACH ROW BEGIN
-	-- Если цена изменялась...
+	-- Р•СЃР»Рё С†РµРЅР° РёР·РјРµРЅСЏР»Р°СЃСЊ...
 	IF OLD.price <> NEW.price THEN
-		-- Внесем запись в журнал
+		-- Р’РЅРµСЃРµРј Р·Р°РїРёСЃСЊ РІ Р¶СѓСЂРЅР°Р»
 		INSERT INTO product_log
 			VALUES (NOW(), USER(), OLD.id, OLD.price, NEW.price);
 	END IF;

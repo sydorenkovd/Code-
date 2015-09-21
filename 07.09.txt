@@ -1,6 +1,6 @@
-We continue to read Maklafin Php and Mysql 2013:
-user_id int NOT NULL AUTO_INCREMENT PRIMARY KEY, - increment id +1, and id become like a key table, "not null" say that every cell(ячейка) must have any meaning.
-From $_REQUEST we get some data(данные) from web-form, and then we put this to $variables like:
+п»їWe continue to read Maklafin Php and Mysql 2013:
+user_id int NOT NULL AUTO_INCREMENT PRIMARY KEY, - increment id +1, and id become like a key table, "not null" say that every cell(СЏС‡РµР№РєР°) must have any meaning.
+From $_REQUEST we get some data(РґР°РЅРЅС‹Рµ) from web-form, and then we put this to $variables like:
 $first_name = trim($_REQUEST['first_name]); - and than we can create sql-request with this variables ant put it to $insert_sql = "INSERT INTO users (first_name, and other data-cell) " . 
                             "VALUES('{$first_name}', and other '{$varibles}');"
 // Insert the user into the database
@@ -13,10 +13,10 @@ PHP&mysql continue.
 chapter 7: bla-bla about arror message, and new function preg_replace_all(); - that recieve 3 paramenres(pattern, replacement, subject) - like this:
 $error_message = preg_replace("/\\\\/", '', $_REQUEST['error_message']); - 4"\\\\" mean only one"\" php-speciality.
 function isset($varibles); - check if varible are declare or "!" - not declare, return boolean.
-Фишинг - is where some evil person change URL and hide there some unusefull information, and can redirect you to another resource. It can be dangerous.
-error_reporting(E_ALL); - we get report(отчёт) about any errors. We can use constant like: E_ERROR, E_WARNING, E_PARSE, E_NOTICE.
-constant DEBUG_MODE - it can turn on/off debugging(отладочный) regime.
+Р¤РёС€РёРЅРі - is where some evil person change URL and hide there some unusefull information, and can redirect you to another resource. It can be dangerous.
+error_reporting(E_ALL); - we get report(РѕС‚С‡С‘С‚) about any errors. We can use constant like: E_ERROR, E_WARNING, E_PARSE, E_NOTICE.
+constant DEBUG_MODE - it can turn on/off debugging(РѕС‚Р»Р°РґРѕС‡РЅС‹Р№) regime.
 256/512 Maklafin phpMysql
 Continue to watch MySql speca:
 time type: DATA year:month:day, DATETIME DATA::hours:minutes:seconds, TIME.
-Нормализация first-level, second-level(or second norm form), third normal form - more tables for except dependence.
+РќРѕСЂРјР°Р»РёР·Р°С†РёСЏ first-level, second-level(or second norm form), third normal form - more tables for except dependence.

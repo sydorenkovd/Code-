@@ -1,7 +1,7 @@
-capacity -- ёмкость, вместимость.
-desperate -- безнадежный.
-desperation -- отчаяние.
-selfish -- егоистичный.
+п»їcapacity -- С‘РјРєРѕСЃС‚СЊ, РІРјРµСЃС‚РёРјРѕСЃС‚СЊ.
+desperate -- Р±РµР·РЅР°РґРµР¶РЅС‹Р№.
+desperation -- РѕС‚С‡Р°СЏРЅРёРµ.
+selfish -- РµРіРѕРёСЃС‚РёС‡РЅС‹Р№.
 -----------------
 Plagins for Wordpress
 We have to create a folder in wp-plagin and add file.php there with: Plugin Name, Author, And License free Software
@@ -12,9 +12,9 @@ __FILE__ -- it's way to our plagin for unique name.
 first normal form let to execute from clone/copy data in plural column.
 For second normal form we must have first norm.form yet. we add table "orders" and left only id(ISBN), title, price. No copy or clone, it's exectly second norm. form.
 -------------
-For example, if you want to look, which books was bought by Darren, you can search them in table 'Customers', where we can see that 'CustNumber' this customer(покупатель) №2. And now we have number, we can choose table Purchases/Orders(заказы), and find graph 'ISBN', and can see, that he bought bokks with numbers 423432423 and 034324234 19/09/2015. It's seem very difficult for human, but it's very fast for MySQL.
+For example, if you want to look, which books was bought by Darren, you can search them in table 'Customers', where we can see that 'CustNumber' this customer(РїРѕРєСѓРїР°С‚РµР»СЊ) в„–2. And now we have number, we can choose table Purchases/Orders(Р·Р°РєР°Р·С‹), and find graph 'ISBN', and can see, that he bought bokks with numbers 423432423 and 034324234 19/09/2015. It's seem very difficult for human, but it's very fast for MySQL.
 ------------------
-Third normal form is 1 table Zip-index(почтовый индекс), 2 table Zip->CityID than 3 table CityId->StateId 4 table StateId->nameState. When we need to change some fields, we can only change it in one place, despite that in first form we have to make SELECT from all field and change it. Third norm.form is great solution for big-data, where there are often some changes.
+Third normal form is 1 table Zip-index(РїРѕС‡С‚РѕРІС‹Р№ РёРЅРґРµРєСЃ), 2 table Zip->CityID than 3 table CityId->StateId 4 table StateId->nameState. When we need to change some fields, we can only change it in one place, despite that in first form we have to make SELECT from all field and change it. Third norm.form is great solution for big-data, where there are often some changes.
 --------------------
 Database relation:
 one to one -- one customer to one address, but we can just create all of this in one table.
@@ -22,15 +22,15 @@ one to plural -- one customer and some orders(books/other).
 plural to plural -- customers to orders, orders to books = customer->order(2 or more)->book(first order = 'Cookbook', second order = 'HTML5').
 ----------------------
 BEGIN -- start transaction.
-COMMIT -- command for database, it let close transaction, before that our transaction is temporary(временная).
+COMMIT -- command for database, it let close transaction, before that our transaction is temporary(РІСЂРµРјРµРЅРЅР°СЏ).
 ROOLBACK -- delete updates before commit, (no work).
 EXPLAIN - explain) your request to database more detailed.
-mysqldump -- резервное копирование.
+mysqldump -- СЂРµР·РµСЂРІРЅРѕРµ РєРѕРїРёСЂРѕРІР°РЅРёРµ.
 ------------
-Для создания базы данных, в которой имеется отношение «многие ко многим»,
-нужно создать промежуточную таблицу, содержащую ключи из двух других
-таблиц. В результате эти две другие таблицы смогут ссылаться друг на друга
-посредством третьей таблицы.
+Р”Р»СЏ СЃРѕР·РґР°РЅРёСЏ Р±Р°Р·С‹ РґР°РЅРЅС‹С…, РІ РєРѕС‚РѕСЂРѕР№ РёРјРµРµС‚СЃСЏ РѕС‚РЅРѕС€РµРЅРёРµ В«РјРЅРѕРіРёРµ РєРѕ РјРЅРѕРіРёРјВ»,
+РЅСѓР¶РЅРѕ СЃРѕР·РґР°С‚СЊ РїСЂРѕРјРµР¶СѓС‚РѕС‡РЅСѓСЋ С‚Р°Р±Р»РёС†Сѓ, СЃРѕРґРµСЂР¶Р°С‰СѓСЋ РєР»СЋС‡Рё РёР· РґРІСѓС… РґСЂСѓРіРёС…
+С‚Р°Р±Р»РёС†. Р’ СЂРµР·СѓР»СЊС‚Р°С‚Рµ СЌС‚Рё РґРІРµ РґСЂСѓРіРёРµ С‚Р°Р±Р»РёС†С‹ СЃРјРѕРіСѓС‚ СЃСЃС‹Р»Р°С‚СЊСЃСЏ РґСЂСѓРі РЅР° РґСЂСѓРіР°
+РїРѕСЃСЂРµРґСЃС‚РІРѕРј С‚СЂРµС‚СЊРµР№ С‚Р°Р±Р»РёС†С‹.
 ----------------
 mysql_select_db($databaseName); -- choose database.
 mysql_connect($db_name, $db_username, $password); -- connect to database.
@@ -58,7 +58,7 @@ echo "</table>";
 mysql_insert_id(); -- function return number of lattest INSERT "id".
 ----------------------
 PREPARE statement FROM "INSERT INTO classics VALUES(?,?,?,?,?)";
-SET @author = "Emily Brontл",
+SET @author = "Emily BrontР»",
 @title = "Wuthering Heights",
 @category = "Classic Fiction",
 @year = "1847",
@@ -67,7 +67,7 @@ EXECUTE statement USING @author,@title,@category,@year,@isbn;
 DEALLOCATE PREPARE statement;
 //Code for SQL-injection defence
 ----------------------
-Way for security access to MySQL and obviate(предотвращать) XSS-attack.
+Way for security access to MySQL and obviate(РїСЂРµРґРѕС‚РІСЂР°С‰Р°С‚СЊ) XSS-attack.
 <?php
 $user = mysql_entities_fix_string($_POST['user']);
 $pass = mysql_entities_fix_string($_POST['pass']);
@@ -87,10 +87,10 @@ return mysql_real_escape_string($string);
 --------------------
 USE world;
 DROP VIEW IF EXISTS veurope;
-CREATE VIEW veurope AS      -- create view на основе SELECT country.name.
+CREATE VIEW veurope AS      -- create view РЅР° РѕСЃРЅРѕРІРµ SELECT country.name.
 SELECT name FROM country
 WHERE continent = 'Europe'; 
 SELECT name FROM veurope;   -- select all country in Europe.
--------ПРОЦЕДУРЫ in MySQL----------
+-------РџР РћР¦Р•Р”РЈР Р« in MySQL----------
 CREATE PROCEDURE getcountries;
 MySQL_SPEC 1:57:00

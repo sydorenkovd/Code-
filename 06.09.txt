@@ -1,5 +1,5 @@
-train on Codacedemy in OOP in php, it was very easy. 5 minute. and about advanced array like association arrays.
-Learning about SCRUM and other metodology: meating for 10-15 minutes, at morning and evening, communication with заказчиком. Main purpose is that заказчик have to be pleased. Every tasks have done by sprints. Every person can choose - how much hours does she need to make task. No one is responsible(ответственный), no one is manager. Every person are responsible, and do it together and replace person if he can't done any task. SCRUM is квинтенсенсия Agile-metodology. Scrum-master build some grafics, and SCRUM-desk.
+п»їtrain on Codacedemy in OOP in php, it was very easy. 5 minute. and about advanced array like association arrays.
+Learning about SCRUM and other metodology: meating for 10-15 minutes, at morning and evening, communication with Р·Р°РєР°Р·С‡РёРєРѕРј. Main purpose is that Р·Р°РєР°Р·С‡РёРє have to be pleased. Every tasks have done by sprints. Every person can choose - how much hours does she need to make task. No one is responsible(РѕС‚РІРµС‚СЃС‚РІРµРЅРЅС‹Р№), no one is manager. Every person are responsible, and do it together and replace person if he can't done any task. SCRUM is РєРІРёРЅС‚РµРЅСЃРµРЅСЃРёСЏ Agile-metodology. Scrum-master build some grafics, and SCRUM-desk.
 Different changes be able to done during coding process.
-Канбан and XP.
+РљР°РЅР±Р°РЅ and XP.
 
