@@ -1,0 +1,96 @@
+capacity -- ёмкость, вместимость.
+desperate -- безнадежный.
+desperation -- отчаяние.
+selfish -- егоистичный.
+-----------------
+Plagins for Wordpress
+We have to create a folder in wp-plagin and add file.php there with: Plugin Name, Author, And License free Software
+__FILE__ -- it's way to our plagin for unique name.
+----------------------
+0:40:00 - Lavric-Plagin for worrdpress
+-------------------
+first normal form let to execute from clone/copy data in plural column.
+For second normal form we must have first norm.form yet. we add table "orders" and left only id(ISBN), title, price. No copy or clone, it's exectly second norm. form.
+-------------
+For example, if you want to look, which books was bought by Darren, you can search them in table 'Customers', where we can see that 'CustNumber' this customer(покупатель) №2. And now we have number, we can choose table Purchases/Orders(заказы), and find graph 'ISBN', and can see, that he bought bokks with numbers 423432423 and 034324234 19/09/2015. It's seem very difficult for human, but it's very fast for MySQL.
+------------------
+Third normal form is 1 table Zip-index(почтовый индекс), 2 table Zip->CityID than 3 table CityId->StateId 4 table StateId->nameState. When we need to change some fields, we can only change it in one place, despite that in first form we have to make SELECT from all field and change it. Third norm.form is great solution for big-data, where there are often some changes.
+--------------------
+Database relation:
+one to one -- one customer to one address, but we can just create all of this in one table.
+one to plural -- one customer and some orders(books/other).
+plural to plural -- customers to orders, orders to books = customer->order(2 or more)->book(first order = 'Cookbook', second order = 'HTML5').
+----------------------
+BEGIN -- start transaction.
+COMMIT -- command for database, it let close transaction, before that our transaction is temporary(временная).
+ROOLBACK -- delete updates before commit, (no work).
+EXPLAIN - explain) your request to database more detailed.
+mysqldump -- резервное копирование.
+------------
+Для создания базы данных, в которой имеется отношение «многие ко многим»,
+нужно создать промежуточную таблицу, содержащую ключи из двух других
+таблиц. В результате эти две другие таблицы смогут ссылаться друг на друга
+посредством третьей таблицы.
+----------------
+mysql_select_db($databaseName); -- choose database.
+mysql_connect($db_name, $db_username, $password); -- connect to database.
+mysql_query($query); -- send request to database, where $query is request(SELECT or other). return special type resource.
+mysql_num_rows($result); -- return number of string request.
+mysql_result($result, $i, 'columnName'); -- show result database-request.
+mysql_fetch_row($result); -- select all column in general, and return result in association array, where we can show information to user like "echo row[$i];".
+mysql_close($db_server); -- exit.
+-----------------------
+mysql_real_escape_string(); -- function for checking data from users.
+---------------------
+Typical SELECT:
+echo "<table><tr> <th>Id</th> <th>Family</th>
+<th>Name</th><th>Age</th></tr>";
+for ($j = 0 ; $j < $rows ; ++$j)
+{
+$row = mysql_fetch_row($result);
+echo "<tr>";
+for ($k = 0 ; $k < 4 ; ++$k)
+echo "<td>$row[$k]</td>";
+echo "</tr>";
+}
+echo "</table>";
+---------------------
+mysql_insert_id(); -- function return number of lattest INSERT "id".
+----------------------
+PREPARE statement FROM "INSERT INTO classics VALUES(?,?,?,?,?)";
+SET @author = "Emily Brontл",
+@title = "Wuthering Heights",
+@category = "Classic Fiction",
+@year = "1847",
+@isbn = "9780553212587";
+EXECUTE statement USING @author,@title,@category,@year,@isbn;
+DEALLOCATE PREPARE statement;
+//Code for SQL-injection defence
+----------------------
+Way for security access to MySQL and obviate(предотвращать) XSS-attack.
+<?php
+$user = mysql_entities_fix_string($_POST['user']);
+$pass = mysql_entities_fix_string($_POST['pass']);
+$query = "SELECT * FROM users WHERE user='$user' AND pass='$pass'";
+function mysql_entities_fix_string($string)
+{
+return htmlentities(mysql_fix_string($string));
+}
+function mysql_fix_string($string)
+{
+if (get_magic_quotes_gpc()) $string = stripslashes($string);
+return mysql_real_escape_string($string);
+}
+?>
+-------------------
+285/688:Nixon
+--------------------
+USE world;
+DROP VIEW IF EXISTS veurope;
+CREATE VIEW veurope AS      -- create view на основе SELECT country.name.
+SELECT name FROM country
+WHERE continent = 'Europe'; 
+SELECT name FROM veurope;   -- select all country in Europe.
+-------ПРОЦЕДУРЫ in MySQL----------
+CREATE PROCEDURE getcountries;
+MySQL_SPEC 1:57:00

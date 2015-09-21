@@ -1,0 +1,33 @@
+function "count()" - count number of elements in array and return this.
+mysql_fetch_row--
+function "strpos()" recieve 2 parametres, string and word that can find in this string, and return true or false
+function "strtoupper($someVariable);" приводит string to UPPERCASE.
+--------
+Chapter 5 Regular expracions
+new function "preg_match($regex, $string_to_search);" it recieve 2 parametres, first is redular exprecions and second is string where we search coincidence(совпадение), preg_match() - return 0 or 1, "0" if no coincidence, and "1" if it is one, and stop searching. If you need to find all coincidence function "preg_match_all()" for you.
+we looked webinar "ШП" about regular expresions.
+We can use ~...s~ like pattern for reg. exprecion for looking for all coincidence where was three any symbols and after was "s".
+We can use ~ca{2,3}ts~ or ~ca(3)ts~ - for how many times can repeat symbols in {} and ().
+Symbol "~ca?ts~" it's mean that letter "a" are not obligation(обязательной) we find both.
+Symbol "~ca+ts~" find all with any number of "a" letters.
+SYmbol "*" find all any numbers of "a" letters and without.
+There are some modificators for greedy and not greedy(жадный и не жадный поиск) we can use ~c.+s~U
+We can use symbols class ~cats[a-z0-9]{3}~ - and we find all cats with number for example (cats0x1, cats8w3).
+~cats\s+and~ - it mean that all spaces beetwen "cats" and "and" will ignore.
+~^it~ - it mean ancor(якорь), that we need Where sentence begin with "It".
+~\.$~ it find dot(точку) in the end of string
+~[a-zA-Z0-9]{6,}~ - regular exprecion for email.
+[\r\n] - reg.exp. перенос строки и возврат каретки.
+Chapter 6 - Create dinamic web-pages
+178/512
+begin or continue to watch courses "SPEECIALIST" Mysql5, fris day;
+\c - command in Mysql-console for stop wrong sql-script.
+SET @name = 'mysql'; - we can declare(обьявить) variable and "SELECT @name;" show this variable, but after "\r' -reconnect, @name will be = null.
+\T C:\mysqlday1.log - logging all insert into console
+\. C:\my.sql - open file
+They use SQl workbench, but i prefer PhpMyAdmin.
+Реляционные databases.
+Проектирование databases. Types TINYINT(127)-1byte, SMALLINT(32777)-2, MEDIUMINT(8388607)-3byte. FLOAT()-4byte
+string type - "char", "varchar(100)"
+ENUM - for saving fix point.
+2:37:46 stop.

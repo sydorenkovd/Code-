@@ -1,0 +1,34 @@
+passion - страсть.
+XML:
+HTML - describe how we can show document
+XML - describe meaning and relation data.
+<?xml version="1.0" encoding="utf-8" ?> - prolog or XML declaration.
+One корневой element.
+If you have strange symbol which no include in ACII, "encoding" must have.
+URI - Uniform Resource Identifier.
+xmlns:price="http://zenviks.ru/catalog/pricelist" -- обозначает пространства имён.
+<price:book>
+	<price:title>XML и IE5</price:title>
+	<price:author>Алекс Гомер</price:author>
+	<price:price>200</price:price>
+</price:book>
+XML:SPEC:2day.
+-------------
+Use modern functions mysqli();
+$connection = new mysqli($db_hostname, $db_username, $db_password, $db_
+database); -- create new database connection.
+$query = "SELECT * FROM classics";
+$result = $connection->query($query);  -- select from database with method in object.
+Some words about new features HTML5:
+<form action='myform.php' method='post' autocomplete='on'>
+<input type='text' name='username'>
+<input type='password' name='password' autocomplete='off'>
+</form>
+//you can turn off autocomplete in some fields.
+<input type='text' name='name' size='50' placeholder='Имя и фамилия'>
+//some useful advice for helping user
+<input type='text' name='creditcard' required='required'>
+// it mean that this fiels must be written.
+XML:SPEC:0:40:00 -- 2day
+
+

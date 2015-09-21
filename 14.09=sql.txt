@@ -1,0 +1,79 @@
+consider - размышлять, обсуждать.
+considerable - значительный.
+considerate - внимательный к другим.
+GRANT ALL ON some_database.* TO 'nickname'@'localhost'
+IDENTIFIED BY 'password';                    -- it needs to create user and give him some right access.
+----------
+ENGINE MyISAM; -- type tool for manager database.
+ALTER TABLE some_table DROP some_column; -- delete column.
+SELECT COUNT(*) FROM some_table; -- count number of column, and return this.
+SELECT DISTINCT author,id FROM some_table; -- show data without coincedence.
+SELECT author,title FROM some_table WHERE author LIKE "Charles%"; -- LIKE is спецификатор.
+SELECT author,title FROM some_table LIMIT 1,2; -- give me two strings, begin from second string, we start counting from "0".
+---------------
+UPDATE classics SET author='Mark Twain (Samuel Langhorne Clemens)'
+WHERE author='Mark Twain';            -- change some fields.
+SELECT author,title FROM classics ORDER BY author; -- sort fields by alphabet index.
+---------------
+SELECT name,author,title FROM customers NATURAL JOIN classics; -- join table by coincedence.
+------------
+SELECT author,title FROM classics WHERE
+author LIKE "Charles%" AND author NOT LIKE "%Darwin"; -- select Charles some Surname, but not Darvin.
+Nixon:235/688
+ALTER TABLE some_table ADD INDEX(some_column); -- create index.
+-------------
+INSERT INTO some_table
+VALUES(12, 'some_value', 'some_value2'),
+VALUES(13, 'some_value3', 'some_value4'); -- insert plural number to table.
+-- we can use IGNORE before INTO for insert values with coincedence.
+------------------------
+INSERT INTO table2 (name, price)
+	SELECT user, 123 as price  -- we can insert "user" from table "mysql.user" to our 
+		FROM mysql.user;   -- table "table2" with new parametr like price(123).
+--------------------------
+LOAD DATA 
+	INFILE 'C:/data.txt' 
+	INTO TABLE table2
+	FIELDS TERMINATED BY '\t'   -- we can take data from file "data.txt" and insert 
+	LINES TERMINATED BY '\r\n'; -- to "table2".
+----------------------
+DELETE FROM table2
+	WHERE id = 57; -- delete some data from table, we must have WHERE in your mysql-                       --  request.
+-----------------------
+ASC and DESC -- sort by возрастанию и убыванию.
+DELTE FROM table2
+ORDER BY id DESC  -- sort by down--, and delete one column.
+LIMIT 1;
+---------------------
+DELETE FROM table2
+WHERE id >= 23 && id <= 26; -- delete columns from 23 to 26.
+-------------------------
+UPDATE table2
+	SET
+		name = CONCAT(name, ' *'), -- update name, and price where id from 10 to
+		price = price * 2.5        -- 30. 
+	WHERE id BETWEEN 10 AND 30;
+-------------------------
+CREATE EVENT infl
+    ON SCHEDULE EVERY 5 SECOND
+    COMMENT 'Inflyacia'
+	DO UPDATE module3.table2 SET price = price * 1.05; -- create event, that it will 
+                                                     -- up++ our price every 5 seconds.
+DROP EVENT infl; -- delete event
+SHOW EVENTS\G -- It shows all events.
+------------------------
+Spec_Mysql 3:33:00 stop
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+<form action="some.php" method="POST"> - post data to server.
+<select name="some_name">
+<option value="some_value">Some value</option> - typical select for web-form.
+</select>
+"@" - we can insert this symbol before our function and we will able to подавить screen errors.
+chapter 9.
+blob - type for saving data(binary large object)
+300/512 - Maklafin
+CREATE TABLE user
+SELECT user, password, host  - create table by select, it will able to be useful for fast
+FROM mysql.user;             - copy table.
+--------------------
+CREATE TABLE user2
+LIKE mysql.user;             - create table by structure another table.
+----------
+ALTER TABLE user
+ADD admin enum('Y','N') AFTER password; - modify table, add new column after password.
+--------
+ALTER TABLE user
+MODIFY admin varchar(10),         -- modify table, change type of admin column, and rename 
+CHANGE users new_user varchar(20); -- "users" to "new_user".
+--------------
+SELECT TABLE_SCHEMA,TABLE_NAME, TABLE_COMMENT, ENGINE
+FROM information_schema.TABLES
+WHERE TABLE_SCHEMA='bookshop';
+// work with information_schema.
+------
+01:26:43 Mysql-spec 2 day;
+Nixon:Mysql

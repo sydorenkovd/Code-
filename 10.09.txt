@@ -1,0 +1,6 @@
+Maklafin php&mysql chapter 8:
+269/512
+Mett Zandstra:
+static - ClassName::staticMethod(); - обращение to static method.
+implements Interface. Abstract Class contain abstact methods and simle methods, but Interface can contain only not realised methods.
+71/528 Zandstra

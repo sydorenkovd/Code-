@@ -1,0 +1,65 @@
+First normal form:
+- Have not repeated column with the same type-data
+- All graphs must have only one point.
+- Must have primary key.
+Mysql-specialist:
+SELECT * FROM some_table
+WHERE id IN (SELECT id FROM some_another_table;); -- select column with id in                                                   -- some_another_table.
+-----------------Агрегаты-----------
+SELECT AVG(exeptLifeAge) -- averange number of age for life in our world.
+FROM world.country;
+----------
+SELECT COUNT(*)
+FROM world.cities
+WHERE contryCode = "RUS"; -- count number of cities in Russia and return number.
+-----------------
+SELECT MIN/MAX(population/area)
+FROM world.country;            -- select min and max point.
+------------------
+SELECT region, COUNT(*)
+FROM world.country
+GROUP BY region;  -- select region left and number of country in this region.
+--------------
+HAVING = WHERE;
+---------------------
+SELECT *
+FROM sotrudniki
+     INNER JOIN otdel
+     ON sotrudniki.id_otdel = otdel.id_otdel; -- join tables.
+------------------------------
+SELECT city.name
+FROM world.city INNER JOIN world.country
+ON city.countryCode = country.code        -- select all cities which there are in Russia.
+WHERE country.name = 'Russian Federation';
+-----------------------
+(SELECT name FROM city WHERE countryCode='RUS')
+UNION
+(SELECT name FROM city WHERE countryCode='UKR') -- show all Ukrainian and Russian cities.
+OEDER BY name;
+-------------------
+SELECT name
+FROM country
+WHERE squareArea = (
+SELECT MAX(squareArea) -- select country with biggest area, we use plural select(вложеная
+FROM country);         -- выборка данных).
+----------------
+SELECT c1.name,c1.countryCode            -- 'c1' and 'c2' are псевдонимы city
+FROM city c1 INNER JOIN city c2          -- join all city which have the same name.
+ON c1.name = c2.name
+WHERE c1.id <>(!=) c2.id
+AND (c1.countryCode = 'RUS' OR c1.countryCode = 'UKR'); -- with countryCode(Ukraine and                                                         -- Russia.
+---------------Подзапросы с выражениями ANY, IN, SOME-------
+SELECT name
+FROM country
+WHERE population > ANY(
+SELECT population
+FROM country             -- select all country where population is more than countries 
+WHERE squareArea > 1e7); -- where squareArea is bigger than 1e7 km.
+---------------------
+Spec-Mysql 3 day 1:11:00
+
+
+
+
+
+
