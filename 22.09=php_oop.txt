@@ -1,0 +1,86 @@
+﻿achieve - выполнять, достигать.
+remarkable - замечательный, удивительный.
+php7 O'reilly:
+-- depricated and even deleted old mysql functions.
+-- improve php-speed at least two times, it's almost become like HHVM from facebook, but php7 need less memory.
+New features:
+if $a <=> $b return -1 if $b>$a, '0' if equals, and '1' if $a>$b.
+nullcoalesce operator "??" -- it returns left statement if it's exist or not null, else return right if left's false, it mean that if we use nullcoalesce operator in multipart, the first not null value is used.
+-->? Upload php7 and come back to 04Type Checking
+---------------------
+static methods - functions, used in class context.
+SomeClass::$name; or SomeClass::getName();
+I would use the "self" keyword. "self" is to classes what the $this pseudo-variable is to objects.
+Traits > php5.4
+trait SomeTrait{...} -- create trait.
+class SomeClass{
+use SomeTrait, OtherSomeTrait;    -- we can use many trait in our class.
+}
+---------------
+if we have the same method in two different trait, we can use "insteadof"
+class SomeClass{
+use SomeTrait, SomeOtherTrait{
+SomeTrait::traitMethod insteadof SomeOtherTrait;
+}
+}  -- means:
+use the traitMethod() method of SomeTrait, instead of the method of the same name in SomeOtherTrait.
+-------------------
+Using static methods in traits:
+trait SomeTrait{
+static function traitMethod{}
+}
+class SomeClass{use SomeTrait;}
+$object = new SomeClass();
+print $object::traitMethod() ."<br>";
+73/528 Zandstra 49/511 Zandstra(ENG)
+--------------------
+An "exception" is a special object instantiated from the built-in Exception class (or from a derived(встроеного) class).
+try {
+//...
+} catch ( FileException $e ) {
+throw $e;
+}
+-----------------------
+Модификатор final:
+A final class cannot be subclassed. Less drastically, a final method cannot be overridden.
+(final) class Checkout {
+final function totalize() {
+// last calculation
+}
+}
+-----------------------
+function __toString() {}
+The __toString() method is particularly useful for logging and error reporting, and for classes whose main task
+is to convey information.
+-----------------
+class Totalizer {
+static function warnAmount( $amt ) {
+$count=0;
+return function( $product ) use ( $amt, &$count ) {
+$count += $product->price;
+print " count: $count\n";
+if ( $count > $amt ) {
+print " high price reached: {$count}\n";
+}
+};
+}
+}
+$processor = new ProcessSale();
+$processor->registerCallback( Totalizer::warnAmount( 8) );
+$processor->sale( new Product( "shoes", 6 ) );
+print "\n";
+$processor->sale( new Product( "coffee", 6 ) );
+//-->
+The anonymous function returned by Totalizer::warnAmount() specifies two variables in its use clause(условие).
+The first is $amt. This is the argument that warnAmount() accepted. The second closure(замкнутая) variable is $count. $count
+is declared in the body of warnAmount() and set initially to zero. Notice that I prepend an ampersand(&) to the $count
+variable in the use clause. This means the variable will be accessed by reference rather than by value in the
+anonymous function. In the body of the anonymous function, I increment $count by the product's value, and
+then test the new total against $amt. If the target value has been reached, I output a notification.
+------------------------
+Директива "use" let to use variables in this context.
+Zandstra chapter5.
+
+
+
+
