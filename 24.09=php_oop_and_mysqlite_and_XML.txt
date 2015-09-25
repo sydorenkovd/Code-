@@ -1,0 +1,116 @@
+﻿Zandstra Chapter5 object tools:
+LyndaOOP:
+Magic function __get and __set:
+function __set($name, $value) {
+    // Allow anything to set the postal code.
+    if ('postal_code' == $name) {
+      $this->$name = $value;
+      return;
+    }
+-------------
+function __get($name) {
+    // Postal code lookup if unset.
+    if (!$this->_postal_code) {
+      $this->_postal_code = $this->_postal_code_guess();
+    }
+-------------
+lyndaOOP:chapter05.
+----------------
+SPEC 3 level:
+Use псевдо-constant: __FUNCTION__ -- return function's name.
+__CLASS__ -- return class's name.
+----------------
+// Describe class in file: MyClass.class.php
+class MyClass{
+function __construct(){
+echo __CLASS__;
+}
+}
+// In "this" file include file with description necessary class.
+function __autoload($class){
+include $class.'.class.php';
+}
+$myClass = new MyClass(); // MyClass
+------------Magic methods------
+class SimpleHouse{
+private $color = "none";
+function __get($name){
+switch($name){
+case 'color': return $this->color;
+default: throw new Exception('Неизвестное свойство!');
+}
+}
+function __set($name, $value){
+switch($name){
+case 'color': $this->color = $value; break;
+default: throw new Exception('Неизвестное свойство!');
+}}
+}
+// getters and setters. use if we call undefined value.
+--------------
+function __call($name, $args){
+echo "Call method '$name' with arguments: " . implode(', ', $args);
+}
+// use if we call undefined function or callStatic() if undefined function has "static" identificator.
+--------------
+function __invoke($num, $action){
+switch($action){
+case '+': return $num + $num;
+case '*': return $num - $num;
+default: throw new Exception('Неизвестное свойство!');
+}
+// it let to address to a method like to an object.
+}
+---------------
+// Create database test.db
+$db = new SQLite3("test.db");
+$db->close();
+// Open another database and work
+$db->open("another.db");
+// delete object
+unset($db);
+---------------
+// Return boolean type
+$result = $db->exec($sql);
+// Number of changed notes.
+echo $db->changes();
+// seek errors description
+echo $db->lastErrorMsg();
+---------Prepared requests--------
+$sql = "INSERT INTO users (name, age)
+VALUES (:name, :age)";
+// prepare request
+$stmt = $db->prepare($sql);
+// bind parametres
+$stmt->bindParam(':name', $name);
+$stmt->bindParam(':age', $age);
+// do request
+$result = $stmt->execute();
+// close if it needs.
+$stmt->close();
+-------------------
+$sql = "SELECT name, age FROM users";
+//standart select
+$result = $db->query($sql);
+// Get assoc array.
+$row = $result->fetchArray(SQLITE3_ASSOC);
+---------php_and_XML--------
+XML(Extensible Markup Language).
+XML definite meaning and relation between data.
+Must exist only one корневой element, which have all others. Empty document(without корневой element) is forbidden.
+SAX(Simple API for XML) -- read XML-document, more popular like XMLPath.
+XSL/T(Extensiblr Stylesheet Language Transformation) -- преобразование XM-documents to another formats.
+--------------------------
+// Create parser
+$sax = xml_parser_create("utf-8");
+---------------
+// declare functions for обработки events.
+function onStart($parser, $tag, $attributes){}
+function onEnd($parser, $tag){}
+function onText($parser, $text){}
+-------------
+// register functions as handler events
+xml_set_element_handler($sax, "onStart", "onEnd");
+xml_set_character_data_handler($sax, "onText");
+Spec:php_level3_2day:02:40:00
+
