@@ -99,7 +99,7 @@ XML(Extensible Markup Language).
 XML definite meaning and relation between data.
 Must exist only one корневой element, which have all others. Empty document(without корневой element) is forbidden.
 SAX(Simple API for XML) -- read XML-document, more popular like XMLPath.
-XSL/T(Extensiblr Stylesheet Language Transformation) -- преобразование XM-documents to another formats.
+XSL/T(Extensiblr Stylesheet Language Transformation) -- преобразование XML-documents to another formats.
 --------------------------
 // Create parser
 $sax = xml_parser_create("utf-8");

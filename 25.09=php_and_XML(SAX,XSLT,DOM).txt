@@ -1,0 +1,56 @@
+﻿xml_parse($sax, file_get_contents("catalog.xml")); -- запуск parser.
+--------------
+Use DOM(Document Object Model)
+// create object of class DomDocument
+$dom = new DomDocument();
+// load document
+$dom->load("catalog.xml");
+// Get корневого element
+$root = $dom->documentElement;
+// Получение коллекции дочерних узлов (экземпляр класса DomNodeList)
+$children = $root->childNodes;
+// Get text content
+$content = $root->textContent;
+-----Create and change XML-document--------
+//create new element
+$author = $dom->createElement("author", "Автор книги");
+// Add new node before other node
+$book->insertBefore($author, $title);
+// Save document
+$dom->save("catalog.xml");
+//<chanel><title></title></chanel> -- result
+$chanel->appendChild($title);
+// Create section CDATA
+$description = $dom->createElement("description");
+$cdata = $dom->createCDATASection("...описание книги...");
+$description->appendChild($cdata);
+$book->appendChild($description);
+-------SimpleXML-----------
+// Upload document and transform it into object.
+$sxml = simplexml_load_file("catalog.xml");
+// we can change(alter, modify) text in necessary element
+$sxml->book[0]->title = "Новое название";
+//write string into file
+file_put_contents("catalog.xml", $sxml->asXML());
+---------------------
+SPEC:php_level3:3day.
+XSL/T:
+// Save document XML
+	$xml = new DomDocument();
+// Load XML document
+	$xml->load("catalog.xml");
+// Create XSL object
+	$xsl = new DomDocument();
+// Load XSL document
+	$xsl->load("catalog.xsl");
+// Create XSLT parser
+	$processor = new XSLTProcessor();
+// Load XSL object
+	$processor->importStylesheet($xsl);
+// Преобразование 
+	echo $processor->transformToXML($xml);
+-------XML Web services---------
+SOAP(Simple Object Access Protocol)
+0:50:00-01:00:00spec 3 day(php)
+1:30:00 2 day(XML)
+-------------
