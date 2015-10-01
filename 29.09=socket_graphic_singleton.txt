@@ -1,0 +1,137 @@
+﻿instance - пример
+self - атрибут присваивания, принадлежности.
+afford - позволить себе, иметь средства.
+sense - ощущать.
+available - доступный, достижимый.
+----------------------
+Sockets and web-services.
+-->let us get access to used net protocol
+-- variant uses:
+-Подключение к службе, для которой отсутствует
+соответствующая обёртка (file wrapper)
+- Осуществление действий, невозможных при
+использовании потоков, но возможных при
+использовании сетевых протоколов
+-------------
+// Create socket
+$socket = fsockopen("mysite.local", $80, $errno, $errmsg, 30);
+if(!$socket){
+echo "$errno : $errmsg";
+}else{
+// prepare request
+$output = "HEAD /server.php HTTP/1.1\r\n";
+$output .= "Host: mysite.local\r\n";
+$output .= "Connection: close\r\n\r\n";
+// send request
+fwrite($socket, $output);
+// read answer
+while( !$feof($socket) ){
+echo $fgets($socket);
+}
+// close socket
+$fclose($socket);
+}
+-------Сетевые functions------
+// Get host-name by ip-address
+$host_name = getHostByAddr("127.0.0.0");
+// get ip-address by host-name
+$ip_address = getHostByName("mysite.local");
+// get array of ip-addresses by host-name
+$ip_addresses = getHostByNameL("mysite.local");
+// get port number by service-name
+$port = getServByName("http", "tcp");
+// get service-name by port number
+$service = getServByPort(80, "tcp");
+// get DNS notes for this host
+$dns_record = dns_get_record("mysite.local");
+// get MX notes for this host
+$dns_record = getmxrr("mysite.local");
+// check host-name is_exist?
+$exists = checkdnsrr("mysite.local");
+-------------------------
+Graphic
+// create image
+$img = imageCreateTrueColor(500, 300);
+// Генерация изображения в формате GIF
+// Копируем на выход
+imageGif($img); or save if we write second parametr.
+// Включение сглаживания
+imageAntiAlias($img, true);
+// Choose colour
+$color = imageColorAllocate($img, 255, 0, 0);
+// paint line
+imageLine($img, 20, 20, 80, 280, $color);
+// paint rectangle
+imageRectangle($img, 20, 20, 80, 280, $color);
+// paint polygon(многоугольник)
+$points = [0, 0, 100, 200, 300, 200];
+imagePolygon($img, $points, 3, $color);
+// Отрисовка сектора
+imageFilledArc($img, 200, 150, 300, 200, 0, 40, $color, IMG_ARC_PIE);
+// paint text
+imageTtfText($img, 30, 10, 300, 150, $color, "Arial.ttf", "Текст");
+// use exist image
+$img = imageCreateFromGif("picture.gif");
+// get image from database
+$img = imageCreateFromString($string);
+-----------------
+SPEC level4
+Генерализация(обобщение)
+-Показывает, что один из двух связанных классов(подтип), является более частной формой другого(супертип), который называется обобщением первого(is a)
+<!--example--> class User{}
+               class Manger extends User{}
+Агрегация
+-случай ассоциации(has a)
+-применяется когда один класс должен быть контейнером других классов.
+-время существования содержащихся классов никак не зависит от времени существования класса контейнера
+<!--example-->
+class Database{
+    public function selectItem(){}
+}
+class Catalog{
+private $db;
+function __construct($db){$this->db = $db;}
+function getProducts(){
+return $this->db->selectItems();}
+}
+Композиция
+-более строгий случай ассоциации(has a)
+-имеет жёсткую зависимость времени существования экземпляров класса контейнера и экземпляров содержащихся классов
+<!--example-->
+class Database{
+    public function selectItem(){}
+}
+class Catalog{
+private $db;
+function __construct(){$this->db = new Database();}
+function getProducts(){
+return $this->db->selectItems();}
+}
+Направленная ассоциация
+-используется когда один класс "общается" с другим при помощи создание экземпляра класса
+<!--example-->
+class Utility{
+  public static function filterData($s){
+   return strip_tags($s);
+}
+}
+class Model{
+  private $text;
+   function getData(){
+$this->text=Utility::filterData($this->text);
+}
+}
+-------Design patterns--------
+--dependency injection
+class Book{
+	private $_title;
+	private $_author;
+	public function __construct($t, Author $a){
+$this->_title = $t;
+$this->_author = $a;
+	}
+---------
+spec 0:57:00 4 level
+
+
+
