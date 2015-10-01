@@ -1,0 +1,84 @@
+﻿-------------
+Factory pattern
+class CarsFactory {
+	function createCar($brand='') {
+	$car_obj = null;
+
+	switch (strtolower($brand)) {
+		case 'toyota':
+			$car_obj = new Toyota;break;
+		case 'bmw':
+			$car_obj = new BMW;break;
+		default:
+			$car_obj = new Lada;
+		}
+	return $car_obj;
+	}
+}
+-------------
+Позднее статическое связывание: keyword "static":
+Adapter Pattern:
+$product1 = new Product(100, 20);
+echo 'Discounted price = '.($product1->getPrice() - $product1->getDiscount());
+
+$product2 = new ProductAdapter($product1);
+echo 'Discounted price = '.$product2->getPrice();
+--------------
+Pattern Adapter and Decorator:
+NOTICE: make github links  ==>???
+---------------
+Closure:
+$func = function($name){
+	echo "hello " . $name; 
+}; // must be ";" after.
+$func("John Smith");
+//$func - is object.
+-----------------
+class User{
+	private $_name;
+	function __construct($n)
+	{$this->_name = $n;}
+	function sayHello($word){
+		$func = function() use($word){
+			echo "$word {$this->_name}!";
+			echo "Bla bla";
+		};
+		 echo $func['word'] . $func['_name'];
+	}
+}
+echo "<br>";
+$user = new User("John");
+$user->sayHello("Hello");
+----------------
+Пространтсва имен или namespace:
+namespace is keyword that mean address package. It can be domain name and package-name.
+
+namespace com\getinstance\util;
+class Debug {
+static function helloWorld(){
+print "Way to hell";}
+----------
+//call method used namespace, and keyword "use".
+namespace main;
+use com\getinstance\util;
+util\Debug: : helloWorld();
+----------------
+//used directory "as" in operator "use" i changed class's alias from
+//from Debug to uDebug.
+namespace main;
+use com\getinstance\util\Debug as uDebug;
+class Debug {
+static function helloWorld(){
+print "Привет, из класса main\Debug";
+}}
+uDebug::helloWorld();
+--------------
+__NAMESPACE__ -- const show which namespace use now.
+-----------
+Zandstra 125.
+-------------
+spec 2 day 1:11:11
+
+
+
+
