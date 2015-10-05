@@ -1,0 +1,76 @@
+﻿desirable - желательно
+--nginx
+--Twig
+--Composer
+--Vargant
+----------------
+magic methods:
+__construct
+__destruct
+__get
+__set
+__clone
+__toString
+__call
+__calStatic
+---------------
+//methods use from functions "serialize" and "unserialize"
+// use to save system condition
+__sleep  -- "serialize" 
+__wakeup  -- "unserialize"
+---------------
+__invoke  -- call if we can try to use object like function.
+__isset -- empty() or isset().
+__unset -- unset()
+magic methods calls if callable methods or properties are not exist.
+----------------
+function for working with strings, array, and files.
+---->Strings
+echo – output one or more strings.
+explode – разбивает строку на подстроки.
+entities – преобразует символы в соответствующие L ности.
+htmlspecialchars – преобразует специальные символы в HTML сущности.
+implode – объединяет элементы массива в строку.
+ltrim – удаляет пробелы из начала строки.
+rtrim – удаляет пробелы из концстроки.
+trim удаляет пробелы из начала и конца строки.
+md5 – возвращает MD5 хэш строки.
+srt_repeat – возвращает повторяющуюся строку.
+str_replace – заменяет строку поиска на строку замены.
+str_split – преобразует строку в массив.
+strlen - возвращает длину строк.
+strrev - переворачивает строку.
+--->Array
+Массивы:
+array_flip – возвращает массив в обратном порядке, то есть ключи массива исходный_массив
+становятся значениями, а значения массива исходный_массив становятся ключами.
+shuffle – перемешать массив
+ksort – отсортировмассив по ключам
+array_unique убрать повторяющиеся значения из массива
+array_unshift – добавить один или несколько элементов в начало массива
+array_sum – вычислить сумму значений массива
+array_shift –извлечь первый элемент массива
+array_reverse – возвращает массив с элементами в обратном порядке
+array_pop – извлечь последний элемент массива
+array_push – добавить один или несколько элеметов в конец массив
+array_keys - выбрать все ключи массива.
+array_count_values - подсчитать количество всех значений массива.
+---->Files:
+filetype – получить тип файла
+fopen – открывает файл или URL
+fwrite – бинарно-безопасная запись в файл
+is_executable – определяет, является ли файл исполняемым
+if_file – определяет, является ли файл обычным файлом
+is_readable – определяет, доступен ли файл для чтия
+is_uploaded_file – определяет, был ли файл загружен при помощи HTTP POST
+is_writable – определяет, доступен ли файл для записи
+mkdir – создаёт директорию
+move_uploaded_file – перемещает загруженный файл в новое место
+pathinfo – возвращает информацию о пути к файлу
+readfile - выводит файл
+rename – переименовыть файл или дерокторию.
+------------------------
+
+
+
+

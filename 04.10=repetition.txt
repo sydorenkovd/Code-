@@ -1,0 +1,96 @@
+﻿----------Closure----------
+// так называемая обвязка
+// объявляем замыкание, но не связываем его с объектом
+$dogs_bark = function() {
+    echo $this->sound;  // где sound - свойство объекта $this
+};
+$new_dog = new Dog();
+// создаем новое замыкание и привязываем его к объекту $new_dog
+$new_closure = $dogs_bark->bindTo($new_dog);
+$new_closure();   // выводит значение свойства $sound
+
+//мы можем присвоить замыкание свойству объекта, по существу, 
+//превратив его в метод этого объекта.
+$dog = new Dog();
+$dog->closure = $dogs_bark;
+$dog->closure();
+--------Some verds about namespace------
+namespace this\new\namespace;  // текущее пространство имён
+
+// импортируем Dogs из пространства dog_pound\model
+use dog_pound\model\Dogs;
+
+$dogs = new Dogs;
+-------------------
+---->???read about -- $input = file_get_contents("php://input"); 
+--------Супер глобальные переменные----------
+$_POST – ассоциативный массив, содержащий пары ключ-значение, отправленные на сервер методом post.
+$_GET – ассоциативный массив, содержащий пары ключ-значение, отправленные на сервер методом get.
+$_REQUEST – объединение пар ключ-значение из $_POST и $_GET.
+$_SERVER – представляет параметры веб-сервера, имеющие отношение к выполнению программы.
+$_ENV – содержит значения, связанные с сервером (хостом) и его конфигурацией.
+$_SESSION – ассоциативный массив, хранящий значения переменных сессии между переходами по страницам и запусками приложения.
+$_COOKIE – предоставляет доступ к переменным, сохраненным в кукисах на клиенте.
+$_FILES – специальный массив для входных данных, полученных при отправке на сервер файлов методом post.
+$_GLOBALS -- keep all super-global-array.
+//доступ к $_ENV можно получить вот таким образом: $GLOBALS['_ENV'];
+--------------------
+//example magic method __set:
+function __set($name, $value) {
+    if ($name == 'whiskers') {
+        if ($value instanceOf Whisker) {
+            $this->whiskersService->setData($value);
+            return $this->whiskersService->getData();
+        } else {
+            throw new WhiskerException("That's not a whisker");
+            return false;
+        }
+    }       
+}
+--------------
+Difference between self and static:
+"self" - всегда вызывается на контекст того класса, в котором происходит обращение через него.
+"static" - обрабатывается иначе, чем self::. При обращении static::
+ используется версия метода определенная в контексте вызвавшего этот метод класса.
+class Dog {
+    static $whoami = 'собака';
+    static $sound = 'лает';
+
+    function makeSounds() {
+        echo self::makeSound() . ', ';
+        echo static::makeSound() . PHP_EOL;
+    }
+
+    function makeSound() {
+        echo static::$whoami . ' ' . static::$sound;
+    }
+}
+Dog::makeSounds(); // - собака лает, собака лает
+class Puppy extends Dog {
+    static $whoami = 'щенок';
+    static $sound = 'гавкает';
+
+    function makeSound(){
+        echo static::$whoami . ' скулит';
+    }
+}
+
+Puppy::makeSounds(); // - щенок гавкает, щенок скулит
+------------MYSQL--------
+difference between MyISAM and InnoDB:
+MyISAM
+– не поддерживает транзакции и с этим связаны его основные недостатки и преимущества;
+– в большинстве случаев он быстрее, так как нет расходов на транзакции;
+– занимает меньше дискового пространства;
+– меньше расход памяти на обновления;
+– полнотекстовый индекс;
+– быстрый INSERT, SELECT.
+InnoDB
+– поддержка транзакций;
+– построчная блокировка. UPDATE не блокирует всю таблицу;
+– отлично ведет себя при смешанной нагрузке (insert|select|update|delete).
+----------------
+
+
+
+

@@ -13,4 +13,28 @@ mysql_connect(); - it's function for connect to database, it get 3 parameters(da
 other usefull function is "mysql_select_db(DATABASE_NAME); - it's аналог функции USE, and just choose this database.
 One new useful function is $result = "mysql_query("SHOW TABLES;"); - that you can add to veriable and use, this function receive some SQL-code and just do this.
 We ended on 137/512
------------------
+--------PDO(PHP Data Object---------
+// connect to Database
+$pdo = new PDO('mysql:host=localhost;dbname=ijdb', 'user(root)',
+'password') ;
+//send database request
+$pdo->exec($sql);
+//return PDOStatement as a result-resource.
+$sql = 'SELECT joketext FROM joke';
+$result = $pdo->query($sql);
+//обрабатываем запрос, приходит массив.
+while ($row = $result->fetch())
+{
+  $jokes[] = $row['joketext'];
+}
+__________________
+foreach ($result as $row)
+{
+$jokes[] = $row['joketext1];
+}
+include 'jokes.html.php';
+-----------------------
+108/383
+Кевин Янк
+
+
