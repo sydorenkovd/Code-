@@ -1,0 +1,134 @@
+﻿//SQL-request if we want to paste notes to our table from another one.
+INSERT INTO tablel(CID, TITLE, PAGES)
+SELECT BID, TNAME, PG FROM table2 WHERE CID = 14;
+-------------------
+$_FILES [имя_поля_л_при1: ][tmp name]; -- имя временного файла.
+------------------------
+Work with FTP-client:
+// устанавливаем соединение с сервером ftp.server.ru
+$conn = ftp_connect("ftp.server.ru"); 
+
+// передаем имя пользователя и пароль
+$login = ftp_login($conn, "login", "password"); 
+   
+// получаем список файлов и каталогов FTP-сервера
+$A = ftp_nlist($conn, ftp_pwd($conn));
+
+// выводим список файлов и каталогов
+foreach($A as $a) echo "<br>$a";
+
+// отключаемся
+ftp_close($conn);
+---------------------
+// загружаем удаленный файл ftp://ftp.server.ru/pub/soft.rar
+if (ftp_get($conn, "soft.rar", "/pub/soft.rar", FTP_BINARY))
+echo "File uploaded";
+----------------
+//Send mails with PHP:
+$mailto = 'user@host.ru';
+$message = '<html><body><hl>npHBeT, BacH!</hl></body></html>";
+$header = 'Content-Type: text/html; charset=Windows-1251\n';
+$header .= ' Content-Transfer-Encoding: quoted-printable\n';
+mail($mailto, $message, $header);
+-------------PHPMailer--------
+//Cначала сценарий получает из CSV-файла адрес получателя, затем //передает его функции  phpmailer(), которая и осуществляет //отправку.
+// подключаем PHP Mailer
+require_once("class.phpmailer.php");
+$mailer = new PHPMailer;
+$from = 'user@host.ru';
+$from_name = 'Home';
+
+function phpmailer($email) {
+
+global $mailer, $from, $from_name;
+// получаем текст сообщения
+$txt = join('', file('message_body.txt'));
+$mailer->ClearAddresses();
+$mailer->AddAddress($email);
+// Адрес отправителя
+$mailer->From = $from;
+// Имя отправителя
+$mailer->FromName = $from_name;
+// Тема сообщения
+$mailer->Subject = 'Наш новый прайс-лист';
+// Текст сообщения 
+$mailer->Body = $txt;
+// удаляем все вложения
+$mailer->ClearAttachments();
+// Добавляем вложение. Первый параметр - 
+// имя файла на диске, второй - имя файла во вложении
+$mailer->AddAttachment('mailer/price.zip','price.zip');
+// Отправление письма
+if ($mailer->Send()) {
+echo "<p>Сообшение по адресу $email успешно отправлено <br>";
+} else {
+// выводим сообщение об ошибке
+echo $mailer->ErrorInfo;
+}}
+$f = fopen('clients.csv','r');
+
+while($array=fgetcsv($f, 1024, ';')) {
+$name= $array[0];
+$email = $array[1];
+phpmailer($email);
+}
+--------------POP3-----
+//сценарий получения сообщений.
+include "pop3.php";
+
+$user="test";
+$password="12345678";
+$apop=0;
+
+$pop3=new pop3_class;
+
+$pop3->hostname="pop.mail.ru";
+
+$error_message = $pop3->Open();
+if ($error_message != "") die($error_message);
+
+$error_message = $pop3->Login($user,$password,$apop);
+if ($error_message != "") die($error_message);
+
+$messages = 0; // число сообщений в ящике
+$size = 0;     // размер
+
+$pop3->Statistics(&$messages,&$size);
+echo "<p>Messages: $messages Size: $size";
+
+if ($messages>0) {
+for($M=1; $M<=$messages; $M++)
+    {
+   // Получаем сообщение с номером $M
+  if(($error=$pop3->RetrieveMessage($M,&$headers,&$body,-1)) =="") 
+        {echo "<p><b>Message $M :</b>
+           <p><b>Headers</b>";
+// выводим заголовки сообщения
+    for($line=0;$line<count($headers);$line++)
+   echo "<PRE>", HtmlSpecialChars($headers[$line]), 
+"</PRE>\n";
+// выводим тело сообщения
+   echo "<p><b>Body</b>:<PRE>";
+       for($line=0;$line<count($body);$line++) 
+      echo HtmlSpecialChars($body[$line]). "\n";
+         }
+     }
+
+}
+$pop3->Close();
+-----------------------
+RSS:Koles/
+-----------------
+SELECT DISTINCT authorname, authoremail
+FROM joke;
+//request where word "distinct" mean no repetition.
+-------------
+//join two tables(joke, author) by inner join.
+SELECT joketext
+FROM joke INNER JOIN author
+ON authorid = author.id
+WHERE name = "Джоан Смит"
+-----------------
+135/383Kevin
+
+
