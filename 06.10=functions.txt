@@ -1,0 +1,30 @@
+﻿echo getenv(MREMORE_ADDR");
+HTTP_REFERER Адрес сайта, с которого пользователь пришел на ваш сайт
+HTTP_USER_AGENT Браузер пользователя
+REMOTE_HOST Доменное имя удаленного компьютера
+------------
+Header("Location: http://dkws.org.ua"); -- redirect user to web-address.
+------------
+if you want to send file used HTML-form, you have to write (enctype= "multipart/form-data")
+serialize() -- make from array to string.
+array_merge() -- для слияния массивов, параметры функции и есть массивы.
+function compact() - для запаковки массива переменными, в параметры передаються имена переменных, а выводятся в виде ассоциативного массива.
+----------------
+function array_map() -- accept two parametres: function and array.
+$а = array(1, 2, 3);
+$result = array_map("asqr", $a);
+print_r($result);
+//count квадрат каждого числа в массиве.
+---------------
+strlen()— возвращает длину строки;
+□ strpos() — позволяет найти подстроку в строке;
+□ strstr() — возвращает первое вхождение подстроки в строку;
+□ substr() — возвращает подстроку;
+□ strcasecmp() — сравнивает две строки без учета регистра символов;;
+□ str_repeat()  — используется для повтора строки;
+□ str_replace() — производит замену в строке;
+□ strspn() — определяет наличие начальных символов в строке;
+□ strcspn() — определяет отсутствие начальных символов в строке.
+
+
+
