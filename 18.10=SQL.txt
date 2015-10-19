@@ -1,0 +1,74 @@
+UPDATE Customers
+SET rating = IF(rating>1000,rating*2,rating);
+//≈сли a истинно то функци€ возвращает значение b, а если a ложно значение c.
+---------------------
+SELECT date,customer_id,amount,
+CASE WHEN amount< = 5000 THEN 'ћалый'
+WHEN amount BETWEEN 5000 AND 15000 THEN '—редний'
+WHEN amount>15000 THEN ' рупный'
+END
+FROM Orders
+ORDER BY customer_id,amount DESC;
+---------------------
+REVOKE and GRAND - отмен€ет и задает привилегии доступа дл€ юзеров.
+----------------------
+mysqldump Цu root Цp Цsingle-transaction Цflush-logs
+Цdatabases SalesDept FinanceDept > УC:\data\full_backup.sqlФ;
+//выполн€ет резервное копирование баз данных SalesDept (ќтдел продаж) в файл full_backup.sql, наход€щийс€ в папке C:\data
+----------------------
+mysql Цu root Цp < "C:\data\full_backup.sql"
+//восстановление базы данных из бекаппа.
+----------------------
+mysqldump Цu root Цp Цlock-tables Цflush-logs
+mysql user db tables_priv columns_priv > "C:\data\users.sql"
+//выполн€ет резервное копирование таблиц user, db, tables_priv и columns_priv системной базы данных mysql в файл users.sql, наход€щийс€ в папке C: \data. “аблицы в базе данных
+mysql имеют тип MyISAM, поэтому при резервировании мы указали параметр Цlock-tables.
+-----------------------
+$pdo = new PDO('mysql:host=localhost;dbname=ijdb', 'root', '');
+$st = $pdo->query('SELECT symbol,planet,element FROM zodiac');
+foreach ($st->fetchAll() as $row) {
+print "{$row['symbol']} goes with {$row['planet']} and have {$row['element']} <br/>";
+}
+$pdo->exec("INSERT INTO family (id,name) VALUES (1,'Vito')");
+//ћетод  exec() отправл€ет полученную команду базе данных. ƒл€ запросов  INSERT,UPDATE и  DELETE он возвращает количество строк данных, задействованных в выполнении запроса.
+$st = $pdo->prepare('INSERT INTO family (id,name) VALUES (?,?)');
+$st->execute(array(1,'Vito'));
+//ћетоды  prepare() и  execute() особенно полезны дл€ запросов, которые должны выполн€тьс€ многократно.
+$st = $pdo->prepare('DELETE FROM family WHERE name LIKE ?');
+$st->execute(array('Fredo'));
+$st->execute(array('Sonny'));
+$st->execute(array('Luca Brasi'));
+//«начени€, передаваемые  execute() , называютс€ св€занными параметрами, каждое значение св€зываетс€ с заполнителем в запросе.
+---------------------
+$st = $db->prepare(
+"SELECT sign FROM zodiac WHERE element LIKE :element OR planet LIKE :planet");
+// SELECT sign FROM zodiac WHERE element LIKE 'earth' OR planet LIKE 'Mars'
+$st->execute(array('planet' => 'Mars', 'element' => 'earth'));
+$row = $st->fetch();
+
+/*PDO также поддерживает именованные заполнители. 
+¬место ? включите в запрос им€ заполнител€ (которое должно начинатьс€ с двоеточи€), 
+а затем используйте эти имена (без двоеточий) в качестве ключей массива параметров, передаваемого  execute().*/
+-----------------------
+$st->bindParam(':element', $element);
+$st->bindparam(':planet', $planet);
+//Mетод автоматически св€зывает содержимое переменной с указанным заполнителем.
+----------------------
+$st = $pdo->prepare('DELETE FROM family WHERE name LIKE ?');
+$st->execute(array('Fredo'));
+print "Deleted rows: " . $st->rowCount();
+//Hадежный способ узнать количество полученных строк
+----------------------
+try {
+$pdo = new PDO('sqlite:/tmp/zodiac.db');
+// ¬ыдавать исключение дл€ любой ошибки базы данных
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$st = $pdo->prepare('SELECT * FROM zodiac');
+$st->execute();
+while ($row = $st->fetch(PDO::FETCH_NUM)) {
+print implode(',',$row). "<br/>\n";
+}
+} catch (Exception $e) {
+print "Database Problem: " . $e->getMessage();
+}
+352/784
