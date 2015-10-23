@@ -1,0 +1,69 @@
+Поддержка XPath доступна в SimpleXML:
+$s = simplexml_load_file(__DIR__ . '/address-book.xml');
+$emails = $s->xpath('/address-book/person/email');
+foreach ($emails as $email) {
+// Обработать $email
+}
+И в DOM:
+$dom = new DOMDocument;
+$dom->load(__DIR__ . '/address-book.xml');
+$xpath = new DOMXPath($dom);
+$emails = $xpath->query('/address-book/person/email');
+foreach ($emails as $email) {
+// Обработать $email
+}
+//PHP содержит класс  XPath, в конструкторе которого передается объект DOM.
+-------PHP-расширение XSLT:------
+// Загрузка шаблона XSL
+$xsl = new DOMDocument;
+$xsl->load(__DIR__ . '/stylesheet.xsl');
+// Создание объекта XSLTProcessor
+$xslt = new XSLTProcessor();
+// Загрузка таблицы стилей
+$xslt->importStylesheet($xsl);
+// Загрузка входного файла XML
+$xml = new DOMDocument;
+$xsl->load(__DIR__ . '/address-book.xml');
+// Преобразование в строку
+$results = $xslt->transformToXML($xml);
+// Преобразование в файл
+$results = $xslt->transformToURI($xml, 'results.txt');
+// Преобразование в объект DOM
+$results = $xslt->transformToDoc($xml);
+//Преобразованный текст сохраняется в  $results
+----------------------------
+// Чтение каналов RSS и Atom
+require __DIR__ . '/magpie/rss_fetch.inc';
+$feed = 'http://news.php.net/group.php?group=php.announce&format=rss';
+$rss = fetch_rss( $feed );
+print "<ul>\n";
+foreach ($rss->items as $item) {
+print '<li><a href="' . $item['link'] . '">' . $item['title'] .
+"</a></li>\n";
+}
+print "</ul>\n";
+430/784
+----------------
+XML:Расширение простых типов XML Schema(XSD):
+demo3.1 and 4 from github.
+-------------
+Liquid XML Studio
+Altova HMLSpy
+--------------
+print_r (get_declared_classes());
+//получить массив всех классов. определенных в сценарии.
+-----------
+use util as u;
+priпt u\Writer::class . "\n";
+//В результате будет выведено следующее.
+util\Writer
+//use it only in php5.5 and more.
+-------------
+print_r( get_class_methods('CDProduct'));
+//возвращает массив, содержащий имена всех методов класса
+---------------
+Программный интерфейс Reflection  API  для РНР то же самое, что и 
+пакет  java.lang.reflect для Java. Он состоит из встроенных классов 
+для анализа свойств, методов и классов.
+---------------
+136/577
