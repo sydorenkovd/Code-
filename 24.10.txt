@@ -1,0 +1,21 @@
+$prod_class  =  new ReflectionClass('CDProduct');
+Reflection::export($prod_class);
+// У  класса Reflection  есть статический метод  export(), 
+//который форматирует и создает дамп данных, содержащихся в 
+//объекте типа  Reflection.
+Strategy:
+To separate strategies and to enable fast switching between them. 
+Also this pattern is a good alternative to inheritance 
+(instead of having an abstract class that is extended).
+https://github.com/sydorenkovd/Design-pattern/blob/master/Strategy.php
+Singelton:
+https://github.com/sydorenkovd/Design-pattern/blob/master/Singleton.php
+--------Linux-----------
+man 'somecommand' - show full info about this command.
+apropos "remove directories" - if you want to know how we can delete directories or files, this way can ask you any command if you've forgotten someone.
+----------
+rwx - write, read and исполнение. All rights. Three group:для владельца, группы владельца и всех остальных.
+read - 4 point, write - 2 point.
+top - отобразить запущенные процессы, используемые ими ресурсы и другую полезную информацию (с автоматическим обновлением данных)
+You can learn more about Linux(Ubutu) here:
+https://github.com/sydorenkovd/Code-/blob/master/Linux_list_command.txt

@@ -71,4 +71,4 @@ print implode(',',$row). "<br/>\n";
 } catch (Exception $e) {
 print "Database Problem: " . $e->getMessage();
 }
-352/784
+
