@@ -1,0 +1,49 @@
+gii - generate: 
+Controller Generator
+Crud Generator
+Form Generator
+Model Generator
+Module Generator
+-------------------
+when we can seen in url:http://yii/index.php?r=page/create
+page mean controller, create mean action.
+for this demonstration you have to comment urlManager in config/main.php
+-------------------
+Book::model()->findAllByPk($arr);
+//method ActiveRecord - find all by id(PK-primary key), recieve number id's.
+Book::model()->findAll("id<:num",[':num'=>$num]);
+//find all coincidence, first arrgument are condition(условие).
+Book::model()->findAllBySql('select * from {{book}} where id < :num',[':num'=>$num]);
+//first sql-request
+--------------------
+array('title', 'compare', 'compareAttribute' => 'text', 'message'=>'Validation' ),
+//validator for comparing text and title
+array('title', 'unique');
+// unique title in database
+--------------------
+CHtml::encode($model->text);
+//encode some danger code from users with helpers.
+CHtml::link($title, ['page/view', 'id'=>$model->id]);
+//link between our site
+CHtml::normalizeUrl(['page/view', 'id'=>$model->id]);
+//create auto-url
+-------CHtml helper form------
+CHtml::form();
+//begin form
+CHtml::textField('text', 'Input');
+//create input
+$list = CHtml::listData($models, 'id', 'title');
+//data for 'select'
+CHtml::dropDownList('drop', '', $list);
+//create 'select'
+CHtml::submitButton('Send');
+//create submit
+CHtml::endForm();
+---------------
+$this->widget('zii.widgets.CListView', array(
+	'dataProvider'=>$dataProvider,
+	'itemView'=>'_view',
+    'sorterHeader'=>'Sort by: ',
+    'summaryText'=>'{start} - {end} from {count}',
+	'sortableAttributes'=>['title', 'id', 'text'],
+-------------
