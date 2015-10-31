@@ -19,3 +19,10 @@ read - 4 point, write - 2 point.
 top - отобразить запущенные процессы, используемые ими ресурсы и другую полезную информацию (с автоматическим обновлением данных)
 You can learn more about Linux(Ubutu) here:
 https://github.com/sydorenkovd/Code-/blob/master/Linux_list_command.txt
+----------
+LOAD DATA INFILE 'c:\2014_may_mini.csv'
+INTO TABLE dou_salary_2014 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
