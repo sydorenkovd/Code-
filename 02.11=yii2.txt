@@ -1,0 +1,103 @@
+----------Show from----------
+public function actionMy(){
+        $model = new MyForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate())
+        {
+            //model loaded and validated
+            return $this->render('my-confirm', ['model'=>$model]);
+        } else {
+            return $this->render('my', ['model'=> $model]);
+        }
+    }
+}
+-----MyForm----------
+//model for form validation
+namespace app\models;
+
+use Yii;
+use yii\base\Model;
+class MyForm extends Model{
+    public $name;
+    public $email;
+    public $file;
+    public function rules(){
+        return [ [['name', 'email'], 'required', 'message'=>'Can\'t be empty'],
+        ['email', 'email', 'message'=>'PLease, enter correct email-address'],
+            [['file'], 'file', 'extensions'=>['jpg', 'gif']]
+        ];
+    }
+}
+---------
+//if from confirm
+use yii\helpers\Html;
+?>
+<b>You enter next information: </b>
+<p><label>Name:</label><?=Html::encode($model->name);?></p>
+<p><label>Email:</label><?=Html::encode($model->email);?></p>
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+-----------
+//show view
+$form = ActiveForm::begin();
+echo $form->field($model, 'name');
+echo $form->field($model, 'email');?>
+<div class="form-group">
+    <?=Html::submitButton('Send', ['class', 'btn btn-primary'])?>
+</div>
+-------------pagination---------
+namespace app\models;
+use yii\db\ActiveRecord;
+    class Country extends ActiveRecord{
+
+    }
+----CountryController
+namespace app\controllers;
+
+use app\models\Country;
+use yii\web\Controller;
+use yii\data\Pagination;
+use app\models\Contry;
+    class CountryController extends Controller{
+        public function actionIndex(){
+            $query = Country::find();
+            $pagination = new Pagination([
+                'defaultPageSize'=>3,
+                'totalCount'=>$query->count(),
+            ]);
+            $countries = $query->orderBy('name')->offset($pagination->offset)->limit($pagination->limit)->all();
+            return $this->render('index',[
+                'countries'=>$countries,
+            'pagination'=>$pagination,
+               ] );
+        }
+    }
+---view
+use yii\helpers\Html;
+use yii\widgets\LinkPager;
+?>
+<b>Countries:</b>
+<ul>
+    <?php foreach($countries as $country){
+   echo "<li>";
+        echo Html::encode("{$country->name} ({$country->code})");
+        echo Html::encode($country->population);
+   echo "</li>";
+}?>
+</ul>
+<?= LinkPager::widget(['pagination'=>$pagination])?>
+-----------Gii-----------
+//config/web.php
+'gii' => [
+'class' => 'yii\gii\Module',
+'allowedIPs' => ['127.0.0.1', '::1', '192.168.0.*', '192.168.178.20'] //
+],
+69/369
+AppAsset.php
+config with dependences
+public $depends = [
+        'app\assets\MyAppAsset',
+        'yii\bootstrap\BootstrapAsset',
+    ];
+----------------
+
+
