@@ -1,0 +1,20 @@
+﻿belong - принадлежать, относиться.
+occupation - занятие, проффесия.
+----------------
+SELECT joketext
+FROM joke INNER JOIN jokecategory
+ON joke.id = jokeid
+INNER JOIN category
+ON categoryid = category.id
+WHERE name = "о д'Артаньяне";
+//it's request plural to plural.
+-------------------
+$person = new StdClass;
+$person->name = 'Vasya';
+//класс без тела класса. Принимает любые свойства и мметоды.
+// В таком классе не работает магия.
+----------------------
+ALTER TABLE author ADD UNIQUE (email)
+// unique email for database.
+
+
