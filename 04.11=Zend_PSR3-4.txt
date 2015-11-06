@@ -1,0 +1,101 @@
+--------Dependensy injection--------
+$di = new Zend\Di\Di;
+class MyFirst{
+    public $second;
+    public function __construct(MySecond $s){
+    $this->second = $s;
+    }
+}
+    class MySecond{
+public function get(){
+    echo "Hello";
+}
+        public function __construct(){
+
+        }
+}
+//$d = new MyFirst(new MySecond());
+//echo $d->second->get();
+$d = $di->get("MyFirst");
+$d->second->get();
+---------Module.php-------
+namespace Page;
+
+use Zend\Mvc\ModuleRouteListener;
+use Zend\Mvc\MvcEvent;
+
+class Module
+{
+
+    public function getConfig()
+    {
+        return include __DIR__ . '/config/module.config.php';
+    }
+
+    public function getAutoloaderConfig()
+    {
+        return array(
+            'Zend\Loader\StandardAutoloader' => array(
+                'namespaces' => array(
+                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
+                ),
+            ),
+        );
+    }
+}
+--------PSR-3 Logger Monolog---------
+require 'vendor/autoload.php';
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+date_default_timezone_set('America/New_York');
+
+// Prepare logger
+$log = new Logger('myApp');
+$log->pushHandler(new StreamHandler('logs/development.log', Logger::DEBUG));
+$log->pushHandler(new StreamHandler('logs/production.log', Logger::WARNING));
+
+// Use logger
+$log->debug('This is a debug message');
+$log->warning('This is a warning message');
+------PSR-4 Autoload------------
+require_once '/path/to/lib/Twig/Autoloader.php';
+Twig_Autoloader::register();
+
+-----------------SPL--------------
+// Copy and paste this into your application, change the  $prefix and  
+// $base_dir variables, and you have yourself a working PSR-4 autoloader.
+spl_autoload_register(function ($class) {
+
+    // project-specific namespace prefix
+    $prefix = 'Foo\\';
+
+    // base directory for the namespace prefix
+    $base_dir = __DIR__ . '/src/';
+
+    // does the class use the namespace prefix?
+    $len = strlen($prefix);
+    if (strncmp($prefix, $class, $len) !== 0) {
+        // no, move to the next registered autoloader
+        return;
+    }
+
+    // get the relative class name
+    $relative_class = substr($class, $len);
+
+    // replace the namespace prefix with the base directory, replace namespace
+    // separators with directory separators in the relative class name, append
+    // with .php
+    $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
+
+    // if the file exists, require it
+    if (file_exists($file)) {
+        require $file;
+    }
+});
+
+$bar = new \Foo\Bar();
+$bar->sayHello();
+
+
