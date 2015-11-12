@@ -1,0 +1,129 @@
+impact - влиять, воздействовать, влияние
+
+
+
+//show file "@app/views/site/license.php"
+echo \Yii::$app->view->renderFile('@app/views/site/license.php');
+---------------
+//choose main view for PostController only
+class PostController extends Controller
+{
+public $layout = 'post';}
+--------create filters------------
+namespace app\components;
+use Yii;
+use yii\base\ActionFilter;
+class ActionTimeFilter extends ActionFilter
+{
+private $_startTime;
+public function beforeAction($action)
+{
+$this->_startTime = microtime(true);
+return parent::beforeAction($action);
+}
+public function afterAction($action, $result)
+{
+$time = microtime(true) - $this->_startTime;
+Yii::trace("Action '{$action->uniqueId}' spent $time second.");
+return parent::afterAction($action, $result);
+}
+}
+-------------Standart filters---------
+AccessControl:
+use yii\filters\AccessControl;
+public function behaviors()
+{
+return [
+'access' => [
+'class' => AccessControl::className(),
+'only' => ['create', 'update'],
+'rules' => [
+// access to authorize users
+'allow' => true,
+'roles' => ['@'],
+],
+// all at least are deny
+],
+],
+];
+}
+------ContentNegotiator------
+//incluse formats like "json and XML" and languages
+use yii\filters\ContentNegotiator;
+use yii\web\Response;
+public function behaviors()
+{
+return [
+[
+'class' => ContentNegotiator::className(),
+'formats' => [
+'application/json' => Response::FORMAT_JSON,
+'application/xml' => Response::FORMAT_XML,
+],
+'languages' => [
+'en-US',
+'de',
+],
+],
+];
+}
+-----------HttpCache-----------
+//client cache
+use yii\filters\HttpCache;
+public function behaviors()
+{
+return [
+[
+'class' => HttpCache::className(),
+'only' => ['index'],
+'lastModified' => function ($action, $params) {
+$q = new \yii\db\Query();
+return $q->from('user')->max('updated_at');
+},
+],
+];
+}
+----------PageCache--------
+//cache on server side
+use yii\filters\PageCache;
+use yii\caching\DbDependency;
+public function behaviors()
+{
+return [
+'pageCache' => [
+'class' => PageCache::className(),
+'only' => ['index'],
+'duration' => 60,
+'dependency' => [
+'class' => DbDependency::className(),
+'sql' => 'SELECT COUNT(*) FROM post',
+],
+'variations' => [
+\Yii::$app->language,
+]
+],
+];
+}
+-------------VerbFilter---------
+//it check, have access to use HTTP-headers for CRUD actions
+use yii\filters\VerbFilter;
+public function behaviors()
+{
+return [
+'verbs' => [
+'class' => VerbFilter::className(),
+'actions' => [
+'index' => ['get'],
+'view' => ['get'],
+'create' => ['get', 'post'],
+'update' => ['get', 'put', 'post'],
+'delete' => ['post', 'delete'],
+],
+],
+];
+}
+---------------
+
+
+
+
