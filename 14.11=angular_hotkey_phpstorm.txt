@@ -17,7 +17,8 @@ Alt + Shift + C  View recent changes
 Ctrl + Alt + Enter - enter before line
 hold Alt - create more carret
 Ctrl + Q - documentation
-
+Скажем только, что расставить курсоры можно с помощью Alt+Click; добавить следующее совпадение в выделение: Alt+J для Windows и Ctrl-G для Mac; удалить совпадение из выделения: Alt+Shift+J для Windows и Ctrl-Shift-G для Mac;
+-----------------------------
 ng-model - связывает форму с моделью. Это значит, что любые 
 изменения в форме обновят данные модели, а при изменении модели - обновится форма
 ng-app обозначает корень AngularJS-приложения и обычно располагается в корне страницы.
