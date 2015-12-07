@@ -4,20 +4,41 @@ seem - казаться
 reject - отвергать, отклонять
 -------Hotkey for PhpStorm----------
 ctrl + w - Select successively increasing code blocks
-Ctrl?+?Shift?+?V  Paste from recent buffers.
-Ctrl?+ Y  Delete line at caret
+Ctrl + Shift + V  Paste from recent buffers.
+Ctrl + Y  Delete line at caret
 Ctrl + R  Replace
 Ctrl + Shift + F  Find in path
 Ctrl + N  Go to class
 Ctrl + Shift + N  Go to file
+----------------
 VCS
 Ctrl + K  Commit project to VCS
 Ctrl + T  Update project from VCS
 Alt + Shift + C  View recent changes
+----------------
 Ctrl + Alt + Enter - enter before line
 hold Alt - create more carret
 Ctrl + Q - documentation
-Скажем только, что расставить курсоры можно с помощью Alt+Click; добавить следующее совпадение в выделение: Alt+J для Windows и Ctrl-G для Mac; удалить совпадение из выделения: Alt+Shift+J для Windows и Ctrl-Shift-G для Mac;
+Ctrl + space - open prompt
+CTRL+ ALT + L - Reformat Code
+CTRL+SHIFT+Backspace - Last Edition Location
+----------------
+Alt + insert - generate code
+Alt + Enter  Show intention actions and quick-fixes
+Ctrl + e - recent files
+double * shift - search files
+Ctrl + Alt + T - surround with (foreach or some)
+Ctrl + O  Override methods
+Ctrl + I  Implement methods
+Ctrl?+ Shift + J - join lines
+Ctrl?+?Shift + ( ]/[ )  Select till code block end/start
+Ctrl + G  Go to line
+Ctrl + B or Ctrl + Click  Go to declaration
+Ctrl + Alt + S - config PHPStorm
+
+
+
+Скажем только, что расставить курсоры можно с помощью Alt+Click; добавить следующее совпадение в выделение: Alt+J удалить совпадение из выделения: Alt+Shift+J;
 -----------------------------
 ng-model - связывает форму с моделью. Это значит, что любые 
 изменения в форме обновят данные модели, а при изменении модели - обновится форма

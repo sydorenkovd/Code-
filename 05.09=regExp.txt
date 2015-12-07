@@ -31,3 +31,4 @@ They use SQl workbench, but i prefer PhpMyAdmin.
 string type - "char", "varchar(100)"
 ENUM - for saving fix point.
 2:37:46 stop.
+regexplib - site for instance different regular expressions.

@@ -1,0 +1,6 @@
+claim - требовать,
+facility - средство,
+existence - существование,
+approach - приближаться,
+convict - вынести приговор,
+
