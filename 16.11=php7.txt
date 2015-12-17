@@ -1,0 +1,84 @@
+claim - требовать,
+facility - средство,
+existence - существование,
+approach - приближаться,
+convict - вынести приговор,
+New operators and functions:
+spaceship -  "<=>" return -1 if first value is bigger than second, else return 1, or 0 if both are equal.
+
+Nullcoalesce operator "??" return first not null value.
+--------Unicode----------
+// Four-digit codepoints
+echo "<p>Caf\u{00e9} Royal</p>";
+
+$tel = "\u{260E}";
+
+echo "<p>$tel (212) 555-0199</p>";
+
+// Five-digit codepoint
+echo "<p>PHP 7 has spaceships! \u{1F680}</p>";
+
+// Leading zeros omitted
+echo "<p>Caf\u{e9} Royal</p>";
+
+// JSON not affected
+echo json_decode("\"\u00e9\"");
+----------------------------
+//generate random string
+bin2hex(random_bytes(20));
+----------------------------
+// use it if you would like using php code in preg_replace function
+preg_replace_callback_array([$pattern => function($matches){}
+[, $pattern => function($matches){}]
+], $list);
+----------------------------
+//compound return type and typeError in error case
+function say($word) : string {
+return "Hello, " . $word
+}
+----------------------------
+// turn on strict mode
+// worked by the function was defined, but no where function is gone.
+declare(strict_types=1);
+-----------Scalar parameter hints-----------------
+Mode in definition file is irrelevant
+Mode is determined by file that calls the function
+Weak mode in file that calls the function
+--Parameters are cast to specified data type
+Strict mode in file that the function
+--Parameters must match the specified type
+--------------Scalar type hints----------
+Parameter type hints
+--Mode is determined by the file calling the function
+Return type declarations
+--Mode is determined by the file that defines the function
+Weak mode casts values to the specified type
+Strict mode enforces use of the specified type
+---------------Anonymous classes-----------------
+Syntax is identical to a named class, but without a name
+Can be assigned to a variable, returned from a function,
+or passed as an argument to a function
+Uses:
+--When the class does not need to be documented
+--Single-use class
+--Unit testing
+----------
+Backward incompatible changes(variable variable)
+-----Uniform variable syntax------
+Internally consistent way of interpreting variables
+Opens up wide range of new structures
+Immediately invoked function expression(IIFE)
+Variable variables
+--Backward incompatible changes affect some edge cases
+--Simple variable variables are unaffected
+
+
+
+
+
+
+
+
+
+
+
