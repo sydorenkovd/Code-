@@ -1,0 +1,40 @@
+//Перечислитъ офисы, план продаж которъх превышает $600 ООО.
+SELECT CITY,NАМЕ,TITLE
+FROM OFFICES JOIN SALESREPS
+ON_MGR = EMPL_NUМ
+WНERE TARGET > 600000.00;
+-----------------------
+Вывести список всех заказов, включая стоимости и описания товаров.
+SELECT ORDER_NUМ, AМOUNT, DESCRIPTION
+FROM ORDERS JOIN PRODUCTS
+ON MFR  =  MFR_ID
+AND PRODUCT = PRODUCT_ID;
+//two equals requests
+SELECT ORDER_NUМ, AМOUNT, DESCRIPTION
+FROM ORDERS JOIN PRODUCTS
+USING (MFR, PRODUCT);
+-----------------------
+//Вывести список заказов стоимостью выше $25 ООО, включающий
+//имя служащего,принявшего заказ, и имя клиента, сделавшего его.
+SELECT ORDER_NUМ, AМOUNT , COMPANY, NAME
+FROM ORDERS JOIN CUSTOMERS ON CUST = CUST_NUМ
+JOIN SALESREPS ON REP = EMPL NUМ
+WHERE AMOUNT > 25000.00;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
