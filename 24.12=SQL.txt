@@ -27,9 +27,28 @@ FROM SALESREPS, SALESREPS MGRS
 WHERE SALESREPS.МANAGER = MGRS.EMPL_NUМ
 AND SALESREPS.QUOTA > MGRS.QUOTA;
 -----------------------
-
-
-
+//Трехтабличное соединение, добляют путем добавления дополнительных join
+SELECT ORDER_NUМ, АМОUNТ,
+COMPANY, NАМЕ
+FROM ORDERS JOIN CUSTOMERS
+ON CUST = CUST_NUМ
+JOIN SALESREPS
+ON REP = EMPL_NUМ
+WНERE АМОUNТ > 25000.00;
+//"outer"Внешние соединения не теряют информацию, поскольку добавляют
+// к результату запроса несвязанные строки.
+-----------------------
+//Показать цену, количество на складе и общее количЕство заказанных единиц для 
+//каждого наименования товара, если для него общее количество заказанных единиц 
+//превышает 75 процентов от колиЧЕства товара на складе.
+SELECT DESCRIPTION, PRICE, QTY_ON_HAND, SUM(QTY)
+FROM PRODUCTS, ORDERS
+WHERE MFR = MFR ID
+AND PRODUCT = PRODUCT_ID
+GROUP ВУ MFR_ID, PRODUCT_ID, DESCRIPTION, PRICE, QTY_ON_HAND
+НAVING SUМ(QTY) > (.75 * QTY_ON_HAND)
+ORDER ВУ QTY_ON_НAND DESC;
+-----------------------
 
 
 
