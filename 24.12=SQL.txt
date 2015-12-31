@@ -49,7 +49,18 @@ GROUP ВУ MFR_ID, PRODUCT_ID, DESCRIPTION, PRICE, QTY_ON_HAND
 НAVING SUМ(QTY) > (.75 * QTY_ON_HAND)
 ORDER ВУ QTY_ON_НAND DESC;
 -----------------------
-
+Вывести список клиентов, закрепленных за(Sие Sтith), которые не 
+разместили заказы на сумму свыше $3000.
+SELECT COMPANY
+FROM CUSTOMERS
+WHERE CUST_REP = (SELECT EMPL_NUМ
+FROM SALESREPS
+WHERE NAME  = 'Sue Smith')
+AND NOT EXISTS (SELECT *
+FROM ORDERS
+WHERE CUST = CUST_NUМ
+AND AМOUNT>3000);
+-----------------------
 
 
 
