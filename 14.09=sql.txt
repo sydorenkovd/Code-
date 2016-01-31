@@ -43,7 +43,7 @@ DELETE FROM table2
 ASC and DESC -- sort by возрастанию и убыванию.
 DELTE FROM table2
 ORDER BY id DESC  -- sort by down--, and delete one column.
-LIMIT 1;
+LIMIT 1;	
 ---------------------
 DELETE FROM table2
 WHERE id >= 23 && id <= 26; -- delete columns from 23 to 26.

@@ -1,0 +1,25 @@
+Big binary objects: BLOB columns fot this kond of information contains video, code for compile and other disstructurtion information. You can keep here IMAGE.
+- DATE
+•  TIME
+•  TIMESTAМP
+Хранит дату наподобие "June 30, 2008"
+Хранит время суток наподобие "12:30:00 p.m."
+Представляет конкретный момент времени с точностью
+до наносекунд.
+Декартово произведение, когда не указаны внешние ключи, переумножаеться.
+---------------------
+"Group by" - operator 'with rollup' allowed to group data by two columns.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
