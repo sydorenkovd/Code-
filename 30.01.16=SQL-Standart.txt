@@ -9,6 +9,9 @@ Big binary objects: BLOB columns fot this kond of information contains video, co
 Декартово произведение, когда не указаны внешние ключи, переумножаеться.
 ---------------------
 "Group by" - operator 'with rollup' allowed to group data by two columns.
+DATETIME - date and clock 8 bytes
+In group by statement, we have to add fields from select, but it's actually doesn't matter for grouping, it's just for mysql.
+
 
 
 
