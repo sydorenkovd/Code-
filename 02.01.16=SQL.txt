@@ -1,0 +1,7 @@
+Гарантироватъ, что обьем заказов клиента не превысит предел его кредита.
+CREATE ASSERTION credit_orders
+СНЕСК (CUSTOMERS.CREDIT_LIMIT >=
+SELECT SUМ (ORDERS.AМOUNT)
+FROM ORDERS
+WHERE ORDERS.CUST = CUSTOMER.CUST_NUМ);
+----------------------
