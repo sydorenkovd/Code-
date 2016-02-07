@@ -12,8 +12,19 @@ Big binary objects: BLOB columns fot this kond of information contains video, co
 DATETIME - date and clock 8 bytes
 In group by statement, we have to add fields from select, but it's actually doesn't matter for grouping, it's just for mysql.
 
-
-
+--------------------
+Delete if we have foreign keys:
+Restrict( ON DELETE RESTRICT ) It means that no action, just forbidden to delete something
+Cascade - means delete bindings rows
+Set null - means if delete rows, in foreign key add null to exect rows
+Set default - means set default value
+-------Транзакции-----------
+Атомарность - либо исполняються все операции транзакции, либо не исполняеться ниодной.
+Целостность - вся база данных должна быть в целостном состоянии, ни один пользователь не должен иметь доступ к данным пока они не согласованы завершение транзакции.
+Изолированость - принцип инкапсуляции транзакции, ни одна транзакция ни изменяет данных другой транзакции во время транзакции.
+Постоянство - персистенство, все должно находиться в согласованом состоянии независимо от сбоев.
+---------Индексы------------
+Индекс - это средство, обеспечивающее быстрый доступ к строкам таблицы на основе значений одного ил нескоьких столбцов.
 
 
 
