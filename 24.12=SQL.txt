@@ -18,7 +18,7 @@ USING (MFR, PRODUCT);
 //имя служащего,принявшего заказ, и имя клиента, сделавшего его.
 SELECT ORDER_NUМ, AМOUNT , COMPANY, NAME
 FROM ORDERS JOIN CUSTOMERS ON CUST = CUST_NUМ
-JOIN SALESREPS ON REP = EMPL NUМ
+JOIN SALESREPS ON REP = EMPL_NUМ
 WHERE AMOUNT > 25000.00;
 -----------------------
 Въвести список служащих, планы продаж которых превышают планы их руководителей.
