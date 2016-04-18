@@ -1,0 +1,49 @@
+For aruser we have right to selcect and insert, fo optuser only select
+GRANT SELECT,INSERT
+ON CUSTOMERS
+ТО  ARUSER;
+
+GRANT SELECT
+ON CUSTOMERS
+ТО OPUSER;
+---------------------
+We can use "all privileges" for short syntax for all rights
+If we want to appoint any privilege for all user, just use "TO PUBLIC"
+
+we can also appoint it for precise rows
+GRANT UPDATE(COMPANY, CUST_REP)
+ON CUSTOMERS
+ТО OPUSER;
+
+Наличие предложения  wiтн  GRANT OPTION  означает, что инструкция  GRANT
+наряду с привилегиями дает право на предоставление этих привилегий другим
+пользователям.
+---------------------
+Отобрать привилегии с помощью инструкции REVOKE
+REVOKE INSERT, UPDATE
+ON SALESREPS
+FROM OPUSER;
+----------------------
+Предоставление ролей на основе уже существующих
+GRANT OPUSER
+ТО FRANCOIS;
+---------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
