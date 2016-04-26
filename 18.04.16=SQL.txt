@@ -42,7 +42,13 @@ GRANT OPUSER
  значениями. Когда записей с одинаковым значением мало — селективность высокая.
  Такие колонки необходимо использовать первыми в составных индексах.
 - 
-
+--------------------
+Self-join
+The SQL SELF JOIN is used to join a table to itself as if the table were two tables, temporarily renaming at least one table in the SQL statement.
+For instance:
+SELECT a.column_name, b.column_name...
+FROM table1 a, table1 b
+WHERE a.common_field = b.common_field;
 
 
 
