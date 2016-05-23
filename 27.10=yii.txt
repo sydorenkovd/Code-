@@ -20,7 +20,7 @@ array('title', 'compare', 'compareAttribute' => 'text', 'message'=>'Validation' 
 //validator for comparing text and title
 array('title', 'unique');
 // unique title in database
---------------------
+--------------------commit
 CHtml::encode($model->text);
 //encode some danger code from users with helpers.
 CHtml::link($title, ['page/view', 'id'=>$model->id]);
