@@ -1,0 +1,123 @@
+The ng-model directive can provide status for application data (invalid, dirty, touched, error):
+
+ng-invalid for css classes, we can also work with:
+ng-empty
+ng-not-empty
+ng-touched
+ng-untouched
+ng-valid
+ng-invalid
+ng-dirty
+ng-pending - если ожидаетс€ а€кс запрос
+ng-pristine это неторонута€ форма.
+≈сли нам нужно перебрать в ng-repeat несколько массивов, то мы можем перебрать один массив, а $index использовать д€л перебора остальных. »ли загнать их под один массив и обращатьс€ к каждому массиву как к свойству.
+
+¬ $rootScope - значени€ задаютьс€ дл€ всего приложени€.
+
+-------------‘ильтры в AngularjS--------------
+
+AngularJS provides filters to transform data:
+
+currency Format a number to a currency format.
+date Format a date to a specified format.
+filter Select a subset of items from an array. ¬озвращает значени€ которые удовлетвор€ют значению фильтра
+json Format an object to a JSON string.
+limitTo Limits an array/string, into a specified number of elements/characters.
+lowercase Format a string to lower case.
+number Format a number to a string.
+orderBy Orders an array by an expression.
+uppercase Format a string to upper case.
+
+<li ng-repeat="x in names | filter:model">
+прив€зав модель к инпуту и отфильтровав, мы получим конкретные значени€ из нее.
+
+Services:
+$http - methods:
+.delete()
+.get()
+.head()
+.jsonp()
+.patch()
+.post()
+.put()
+$http - properties:
+.config the object used to generate the request.
+.data a string, or an object, carrying the response from the server.
+.headers a function to use to get header information.
+.status a number defining the HTTP status.
+.statusText a string defining the HTTP status.
+
+$location
+$timeout
+$interval
+
+app.service('hexafy', function() {
+    this.myFunc = function (x) {
+        return x + Math.round(Math.random() * 100);
+    }
+});
+“аким образом мы можем создать собственный сервис.
+
+AngularJS Events:
+ng-blur
+ng-change
+ng-click
+ng-copy
+ng-cut
+ng-dblclick
+ng-focus
+ng-keydown
+ng-keypress
+ng-keyup
+ng-mousedown
+ng-mouseenter
+ng-mouseleave
+ng-mousemove
+ng-mouseover
+ng-mouseup
+ng-paste
+
+
+$scope.showMe = !$scope.showMe; toggle emulator
+The $event object contains the browser's event object
+
+<div ng-switch="myVar">
+  <div ng-switch-when="dogs">
+¬ зависимости от включенного чекбокса или селекта, мы можем манипулировать отображаемым текстом.
+
+INPUT fields have the following states:
+
+$untouched The field has not been touched yet
+$touched The field has been touched
+$pristine The field has not been modified yet
+$dirty The field has been modified
+$invalid The field content is not valid
+$valid The field content is valid
+
+<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The name is required.</span>
+ќбозначить значени€ об€зательное дл€ заполнени€ со всплывающей подсказкой.
+
+The following classes are added to, or removed from, input fields:
+
+ng-untouched The field has not been touched yet
+ng-touched The field has been touched
+ng-pristine The field has not been  modified yet
+ng-dirty The field has been modified
+ng-valid The field content is valid
+ng-invalid The field content is not valid
+ng-valid-key One key for each validation. Example: ng-valid-required, useful when there are more than one thing that must be validated
+ng-invalid-key Example: ng-invalid-required
+-------------------
+var app = angular.module('myApp', ['ngAnimate']);
+»нициализаци€ приложени€ со стороннего источника.
+
+The directives in AngularJS who add/remove classes are:
+
+ng-show
+ng-hide
+ng-class
+ng-view
+ng-include
+ng-repeat
+ng-if
+ng-switch
