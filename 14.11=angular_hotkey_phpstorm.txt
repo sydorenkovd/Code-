@@ -35,8 +35,9 @@ Ctrl?+?Shift + ( ]/[ )  Select till code block end/start
 Ctrl + G  Go to line
 Ctrl + B or Ctrl + Click  Go to declaration
 Ctrl + Alt + S - config PHPStorm
-
-
+Ctrl + Tab - switch the tab in phpstorm nalog of alt+tab in desctop
+Ctrl + R - find and replace string in current file
+enter shift and you can make it in the hole project
 
 Скажем только, что расставить курсоры можно с помощью Alt+Click; добавить следующее совпадение в выделение: Alt+J удалить совпадение из выделения: Alt+Shift+J;
 -----------------------------
